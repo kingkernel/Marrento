@@ -1,4 +1,5 @@
 <?php
-echo "Ola mundo Marrento!!!";
-
+class index {
+	echo "Ola mundo Marrento!!!";
+}
 ?>
