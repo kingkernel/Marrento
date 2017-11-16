@@ -1,0 +1,20 @@
+# Arquivo: .htaccess
+# Data: 17/12/2013
+# Última alteração: 09/12/2016
+# reescrita de URL ativa
+RewriteEngine on
+# Condição, se o arquivo existir, execute arquivo
+RewriteCond %{REQUEST_FILENAME} !-f
+# Condição, se o diretório existir, execute diretório
+RewriteCond %{SCRIPT_FILENAME} !-d
+# joga tudo que é digitado na variavel "urldigitada"
+RewriteRule ^(.*)$ index.php?urldigitada=$1
+# desabilitando a listagem de diretorios do sistema
+# Options -Indexes
+# RewriteRule (./)$ %{QUERY_STRING}%$1
+# adicionando charset nas paginas
+# AddDefaultCharset UTF-8
+<FilesMatch "\.(htm|html|css|js|php)$">
+AddDefaultCharset UTF-8
+</FilesMatch>
+# RewriteRule (\/)$ /
