@@ -1,5 +1,10 @@
 <?php
 class index {
-	echo "Ola mundo Marrento!!!";
+	public function __construct(){
+		
+	}
+	public function index(){
+		echo "Ola mundo Marrento!!!";
+	}
 }
 ?>
