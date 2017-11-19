@@ -5,7 +5,7 @@
   	Funções relacionados ao controlador geral do MVC
   	Criador: Daniel José dos Santos
  	Criação: 15/11/2017
- 	Últimas alterações: 15/11/2017
+ 	Últimas alterações: 19/11/2017
 ###################################################################################################
 **/
 //	inicializa a sessão para todo o site
@@ -20,6 +20,7 @@ define ("PATHVISAO", __DIR__ . "/app/visao/");
 define ("PATHMOTOR", __DIR__ . "/app/motor/");
 define ("PUBLICDIR", __DIR__. "/public/");
 define ("FONTES", __DIR__. "/public/fonts/net/");
+define ("CLASSES", __DIR__. "/app/motor/class/");
 //	faz a leitura automática de classes. todas classes do sitema devem estar nessa pasta
 spl_autoload_register(function ($class_name) {
     include PATHMOTOR . "class/" . $class_name . '.class.php';
@@ -42,6 +43,14 @@ $buscapath = scandir($pathmotor);
 	então inclua neste index seu conteudo.
 ###################################################################################################
  **/
+	if(isset($_SESSION["load"]["index"]["dbstart"]) == true){
+			    $db = new dbconnect();
+			    $db->connect();
+			    //return $db->db;
+			    $GLOBALS["DB"] = $db->db;
+		} else {
+	};
+
 if (in_array($parametros[0], $buscapath) == true){
 	//	caso exista inclue seu conteudo sera incluí­do
 	include_once($pathmotor . $parametros[0] . "/" . $parametros[0] . ".php");
@@ -55,7 +64,7 @@ if (in_array($parametros[0], $buscapath) == true){
 			if ($parametros[1] == ""){
 				// atribuimos index que é o padrão
 				$parametros[1] = "index";
-				};
+				};			
 				//caso digitem alguma coisa inexistente
 			if (method_exists($page, $parametros[1]) == true){
 				//se o argumento for valido execute o metodo
