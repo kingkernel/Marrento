@@ -43,7 +43,6 @@ $buscapath = scandir($pathmotor);
 ###################################################################################################
  **/
 if (in_array($parametros[0], $buscapath) == true){
-
 	//	caso exista inclue seu conteudo sera incluí­do
 	include_once($pathmotor . $parametros[0] . "/" . $parametros[0] . ".php");
 
@@ -56,7 +55,7 @@ if (in_array($parametros[0], $buscapath) == true){
 			if ($parametros[1] == ""){
 				// atribuimos index que é o padrão
 				$parametros[1] = "index";
-				};			
+				};
 				//caso digitem alguma coisa inexistente
 			if (method_exists($page, $parametros[1]) == true){
 				//se o argumento for valido execute o metodo
