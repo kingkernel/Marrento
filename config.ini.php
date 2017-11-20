@@ -11,22 +11,22 @@ framework = bootstrap
 
 [banco_de_dados]
 driver=mysql
-dbname=meubanco
-banco=meubanco
-usuario=meuuser
-senha="minhasenha"
-host=127.0.0.1
+banco=kingkern_iceberg
+usuario=kingkern_iceberg
+senha=claudi741099@@
+host=138.128.175.66
 
 [offlinedb]
 driver=mysql
-dbname=meubanco
-banco=meubanco
-usuario=meuuser
-senha="minhasenha"
+banco=artcell
+usuario=root
+senha=
 host=127.0.0.1
 
 [urlmode]
 comandos=database
-#comandos=url
+comandos=url
+[index]
+dbstart=1
 **/
 ?>

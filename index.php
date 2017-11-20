@@ -23,7 +23,11 @@ define ("FONTES", __DIR__. "/public/fonts/net/");
 define ("CLASSES", __DIR__. "/app/motor/class/");
 //	faz a leitura automática de classes. todas classes do sitema devem estar nessa pasta
 spl_autoload_register(function ($class_name) {
-    include PATHMOTOR . "class/" . $class_name . '.class.php';
+	if (file_exists(PATHMOTOR . "class/" . $class_name . '.class.php')){
+		include PATHMOTOR . "class/" . $class_name . '.class.php';
+	} else {
+		include PATHMOTOR . "class/native/" . $class_name . '.class.php';
+	};
 });
 // Arquivo com as funções principais e básicas do sistema
 require(PATHMOTOR."kk-motor-01.php");
