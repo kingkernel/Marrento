@@ -8,7 +8,7 @@ class pesquisa{
 		//$tabela->create_insert();
 		//print_r($tabela->db);
 		//$dados = array('nome varchar(10)', "argumento varchar(50)", "idade date");
-		//$tabela->create_procedure_add("sp_add","postagens", $dados);
+		//$tabela->create_procedure_add("sp_add_bairros","bairros");
 		
 	}
 }

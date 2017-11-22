@@ -41,10 +41,72 @@ class load_table{
 			};
 			$presql1 = "insert into ".$this->table ." (". $presql2 . ") values (".$presql3.");";
 			echo $presql1 . "<br/>";
-			//print_r($campos);
-			$this->create_procedure_add("sp_add_".$value, $value, $procedureargs);
+			//print_r($procedureargs);
+			$this->create_procedure_add("sp_add_".$value, $value);
+			$this->create_procedure_del("sp_del_".$value, $value);
 		};
 
+	}
+	public function create_procedure_add($nome, $tabela){
+		$sql = "describe ".$tabela;
+		$query = $this->db->query($sql);
+		// contem somento os nome dos campos
+		$campos1 = [];
+		// nome dos campos como argumento e tipo de dados
+		$campos2 = [];
+		while ($dados = $query->fetch(PDO::FETCH_ASSOC)){
+			//caso seja chave primaria, e auto_increment, não será adicionado no array
+			if ($dados["Key"] != "PRI" && $dados["Extra"] !="auto_increment"){
+				//criando array soimente com o nome dos campos
+				array_push($campos1, $dados["Field"]);
+				//criando array com "arg" nome e tipo
+				array_push($campos2, "arg_".$dados["Field"]. " " .$dados["Type"]);
+			};
+		};
+		// criando variavel para armazenar campos como strind
+		$arg = [];
+		foreach ($campos1 as $key => $value) {
+			array_push($arg, "arg_".$value);
+		};
+		//transformando array em string
+		$parametros = implode(", ", $campos2);
+		$campos1 = implode(", ", $campos1);
+		$arg = implode(", ", $arg);
+		//Jogando na tela
+		echo "delimiter // \n \t\t create procedure ".$nome. "(" .$parametros.")\n \t\t\t begin\n \t\t\t\tinsert into ".$tabela." (".$campos1.") values(".$arg.");\n \t\t\t end //\n delimiter ;\n\n";
+	}
+	public function create_procedure_del($nome, $tabela){
+		$sql = "describe ".$tabela;
+		$query = $this->db->query($sql);
+		// contem somento os nome dos campos
+		$campos1 = [];
+		// nome dos campos como argumento e tipo de dados
+		$campos2 = [];
+		$chave = "";
+		while ($dados = $query->fetch(PDO::FETCH_ASSOC)){
+			//caso seja chave primaria, e auto_increment, não será adicionado no array
+			if ($dados["Key"] != "PRI" && $dados["Extra"] !="auto_increment"){
+				//criando array soimente com o nome dos campos
+				array_push($campos1, $dados["Field"]);
+				//criando array com "arg" nome e tipo
+				array_push($campos2, "arg_".$dados["Field"]. " " .$dados["Type"]);
+			};
+			if($dados["Key"] == "PRI"){
+				$chave = $dados["Field"];
+			};
+		};
+		// criando variavel para armazenar campos como strind
+		$arg = [];
+		foreach ($campos1 as $key => $value) {
+			array_push($arg, "arg_".$value);
+		};
+		//transformando array em string
+		$parametros = implode(", ", $campos2);
+		$campos1 = implode(", ", $campos1);
+		$arg = implode(", ", $arg);
+		//Jogando na tela
+		echo "delimiter // \n \t\t create procedure ".$nome. "(" .$parametros.")\n \t\t\t begin\n \t\t\t\tdelete from ".$tabela." where ".$chave."=\"arg_$chave;\"\n \t\t\t end //\n delimiter ;\n\n";	
+		//echo "<b>chave primaria : </b><s>".$chave."</s>";
 	}
 	public function create_insert(){
 		$this->table;
@@ -62,26 +124,6 @@ class load_table{
 	}
 	public function query_simple(){
 
-	}
-	public function create_procedure_add($nome, $tabela, $argumentos=[]){
-		echo "delimiter // \n \t\t create procedure ".$nome. "(";
-		$preparametros=[];
-		$campos = [];
-		$newcampos = [];
-		foreach ($argumentos as $key => $value) {
-			array_push($preparametros, "arg_".$value);
-			$newcompos = explode(" ", $value);
-			array_push($newcampos, $newcompos[0]);
-		};
-			$newcampos = implode(", ", $newcampos);
-			$parametros = implode(", ", $preparametros);
-			$campos = implode(", ", $argumentos);
-			$preparametros = implode(", ", $preparametros);
-		echo $parametros . ")\n \t\t\t begin\n \t\t\t\tinsert into ".$tabela." (".$newcampos.") values(".$preparametros.");\n end //\n delimiter ;\n\n";
-
-	}
-	public function create_procedure_del(){
-		
 	}
 	public function create_procedure_sel(){
 		
