@@ -41,7 +41,6 @@ class load_table{
 			};
 			$presql1 = "insert into ".$this->table ." (". $presql2 . ") values (".$presql3.");";
 			echo $presql1 . "<br/>";
-			//print_r($procedureargs);
 			$this->create_procedure_add("sp_add_".$value, $value);
 			$this->create_procedure_del("sp_del_".$value, $value);
 		};
