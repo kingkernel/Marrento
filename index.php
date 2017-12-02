@@ -72,7 +72,7 @@ if (in_array($parametros[0], $buscapath) == true){
 				//caso digitem alguma coisa inexistente
 			if (method_exists($page, $parametros[1]) == true){
 				//se o argumento for valido execute o metodo
-				$page->$parametros[1]();
+				$page->{$parametros[1]}();
 				} else {
 					//caso contrario, exit
 					echo "Argumento invalido : <b>" . $parametros[1]."</b>";
