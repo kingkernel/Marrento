@@ -27,6 +27,6 @@ host=127.0.0.1
 comandos=database
 comandos=url
 [index]
-dbstart=1
+dbstart=0
 **/
 ?>
