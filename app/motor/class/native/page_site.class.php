@@ -18,10 +18,10 @@ class page_site{
 		if(!isset($this->language)){$this->language="pt-br";};if(!isset($this->titlepage)){$this->titlepage="";};if(!isset($this->headersinclude)){$caminho=urlcss($_GET);$this->headersinclude='<link href="'.$caminho.'public/css/bootstrap.min.css" rel="stylesheet"><link href="'.$caminho.'public/css/bootstrap-theme.min.css" rel="stylesheet"><script src="'.$caminho.'public/js/jquery-1.11.1.min.js"></script><script src="'.$caminho.'public/js/bootstrap.min.js"></script><style type="text/css">.label,.glyphicon, .fa{ margin-right:5px; }</style>';};if(!isset($this->scriptsendpage)){$this->scriptsendpage="";};
 	}
 	public function render(){
-		echo '<!DOCTYPE html><html lang="'.$this->language.'"><head><meta charset="utf-8">'.$this->outrosmeta.'<title>'.$this->titlepage.'</title><meta name="viewport" content="width=device-width, initial-scale=1">'.$this->headersinclude.'</head><body '.$this->bodyextras.'>'.$this->bodycontent.'</body><script type="text/javascript">'.$this->scriptsendpage.'</script></html>';
+		echo '<!DOCTYPE html><html lang="'.$this->language.'"><head><meta charset="utf-8">'.$this->outrosmeta.'<title>'.$this->titlepage.'</title><meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">'.$this->headersinclude.'</head><body '.$this->bodyextras.'>'.$this->bodycontent.'</body><script type="text/javascript">'.$this->scriptsendpage.'</script></html>';
 	}
 	public function help(){
-		include PUBLICDIR . get_class();
+		include PUBLICDIR."thisHelp/".get_class(). ".html";
 	}
 
 }
