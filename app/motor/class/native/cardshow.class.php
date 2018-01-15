@@ -2,8 +2,12 @@
 
 /**
 Data criação: 25/05/2017
-Última Alteração: 13/01/2018
+Última Alteração: 14/01/2018
 Autor: daniel.santos.ap@gmail.com
+
+###############################################################################
+TEMPORARIA FINALIZADA
+###############################################################################
 **/
 class cardshow {
 	public $upText = "SISTEMA DE GERENCIAMENTO";
