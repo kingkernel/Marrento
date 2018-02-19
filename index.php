@@ -5,7 +5,7 @@
   	Funções relacionados ao controlador geral do MVC
   	Criador: Daniel José dos Santos
  	Criação: 15/11/2017
- 	Últimas alterações: 19/11/2017
+ 	Últimas alterações: 14/01/2018
 ###################################################################################################
 **/
 //	inicializa a sessão para todo o site
@@ -18,7 +18,7 @@ define ("PATHCONTROLER", __DIR__ . "/app/controlador/");
 define ("PATHMODELO", __DIR__ . "/app/modelo/");
 define ("PATHVISAO", __DIR__ . "/app/visao/");
 define ("PATHMOTOR", __DIR__ . "/app/motor/");
-define ("PUBLICDIR", __DIR__. "/public/");
+define ("PUBLICDIR", "/public/");
 define ("FONTES", __DIR__. "/public/fonts/net/");
 define ("CLASSES", __DIR__. "/app/motor/class/");
 //	faz a leitura automática de classes. todas classes do sitema devem estar nessa pasta
@@ -47,14 +47,6 @@ $buscapath = scandir($pathmotor);
 	então inclua neste index seu conteudo.
 ###################################################################################################
  **/
-	if(isset($_SESSION["load"]["index"]["dbstart"]) == true){
-			    $db = new dbconnect();
-			    $db->connect();
-			    //return $db->db;
-			    $GLOBALS["DB"] = $db->db;
-		} else {
-	};
-
 if (in_array($parametros[0], $buscapath) == true){
 	//	caso exista inclue seu conteudo sera incluí­do
 	include_once($pathmotor . $parametros[0] . "/" . $parametros[0] . ".php");
@@ -76,11 +68,16 @@ if (in_array($parametros[0], $buscapath) == true){
 				} else {
 					//caso contrario, exit
 					echo "Argumento invalido : <b>" . $parametros[1]."</b>";
+					header("Location: /");
+					echo "<script>document.reload();</script>";
 					exit;
 				};	
 		};
 		// caso o que foi digitado na url não existir, exiba a mensagem
 	} else {
-		echo "Módulo inexistente, ou inativado!";
+		$error = "E"."404";
+			include("pagesError.php");
+			$page = new pagesError;
+			$page->$error();
 		};
 ?>
