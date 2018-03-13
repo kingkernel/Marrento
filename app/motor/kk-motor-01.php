@@ -1,7 +1,7 @@
 <?php 
 /**
 Criação 15/11/2017
-Última Alteração: 15/11/2017
+Última Alteração: 11/03/2018
 Autor: Daniel J. Santos
 E-mail: daniel.santos.ap@gmail.com
 **/
@@ -10,8 +10,54 @@ $_SESSION["load"]=parse_ini_file("config.ini.php", true);
 Arquivo .ini com configurações do banco de dados
 encarregado de armazenar as informações de confuguração do banco de dados tanto off-line quanto on-line
 **/
+function includeFile($filelist, $path = ''){
+    $include = [];
+    foreach ($filelist as $key => $value) {
+        $file = explode('.', $value);
+        $quant = (count($file))-1;
+        switch ($file[$quant]) {
+                  case 'js':
+                      $file = '<script type="text/javascript" src="'.$path."js/".$value.'"></script>';
+                      array_push($include, $file);
+                      break;
+                  case 'css':
+                      $file = '<link rel="stylesheet" type="text/css" href="'.$path."css/".$value.'" />';
+                      array_push($include, $file);
+                      break;
+                  default:
+                      $file = 'inlcude("'.$value.'")';
+                      array_push($include, $file);
+                      break;
+              };
+    };
+    return $include;
+};
+function convertToCols($resultSet){
+    $data = $resultSet->fetch(PDO::FETCH_ASSOC);
+    $set ='<tr><td>';
+    $set .= implode('</td><td>', $data);
+    $set .= '</td></tr>';
+   // print_r($data);
+    return $set . "<br/>";
+    //print_r(array_keys($data));
+};
+function validate($action){
+    if(!isset($_SESSION["logado"])){
+        return $action;
+    };
+}
 function urlcss($url){
 	if (!isset($url["urldigitada"])){$url["urldigitada"] = "";};$espacos = explode("/", $url["urldigitada"]);$total = count($espacos);$barras="";$x=2;while ($x <= $total){$barras .= "../";$x++;};return $barras;
+};
+function minimalheader($pastas){
+    /**
+    data criação 15/11/2017
+    **/
+    return '<link href="'.$pastas.'public/css/bootstrap.min.css" rel="stylesheet"><link href="'.$pastas.'public/css/bootstrap-theme.min.css" rel="stylesheet"><script src="'.$pastas.'public/js/jquery-1.11.1.min.js"></script><script src="'.$pastas.'public/js/bootstrap.min.js"></script><style type="text/css">.label,.glyphicon, .fa{ margin-right:5px; }</style>';
+};
+function getjs($template){
+    $compatada = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", file_get_contents($template));
+    return $compatada;
 };
 /**
 ##########################################################################################################
@@ -94,18 +140,8 @@ function retornaqueryinfo($dados){
         };
     return $result;
 };
-function minimalheader($pastas){
-	/**
-	data criação 15/11/2017
-	**/
-	return '<link href="'.$pastas.'public/css/bootstrap.min.css" rel="stylesheet"><link href="'.$pastas.'public/css/bootstrap-theme.min.css" rel="stylesheet"><script src="'.$pastas.'jquery-1.11.1.min.js"></script><script src="'.$pastas.'public/js/bootstrap.min.js"></script><style type="text/css">.label,.glyphicon, .fa{ margin-right:5px; }</style>';
-};
 function fontawesome($pastas){
     return '<link rel="stylesheet" href="'.$pastas.'public/css/font-awesome/font-awesome.min.css">';
-};
-function compacta($template){
-    $compatada = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", file_get_contents($template));
-    return $compatada;
 };
 class tag{
     /**
@@ -151,11 +187,11 @@ class inline{
         
     }
     public function html(){
-        $this->somacontent = '<div class="form-inline" style="margin-left:10px; margin-right: 10px"><label for="nasc">Nascimento : </label><select class="form-control" style="margin-bottom:10px;" name="anouser"><option> ANO </option>';$x=2017; while ($x >= 1900) {$this->somacontent .= '<option value="'.$x.'"">'.$x.'</option>';$x--;};$this->somacontent .= '</select> <select class="form-control" style="margin-bottom:10px;" name="mesuser"><option> MÊS </option>';$meses = array("01"=>"Janeiro", "02"=>"Fevereiro", "03"=>"Março", "04"=>"Abril", "05"=>"Maio", "06"=>"Junho", "07"=>"Julho", "08"=>"Agosto", "09"=>"Setembro", "10"=>"Outubro", "11"=>"Novembro", "12"=>"Dezembro");foreach ($meses as $key => $value) {$this->somacontent .= '<option value="'.$key.'">'.$value.'</option>';};$this->somacontent .= '</select> <select class="form-control" style="margin-bottom:10px;" name="diauser"><option> DIA </option>';$x=1;while ($x <= 31) {$this->somacontent .= '<option value="'.$x.'">'.$x.'</option>';$x++;};$this->somacontent .= '</select></div>';
+        $this->somacontent = '<div class="form-inline" style="margin-left:10px; margin-right: 10px"><label for="nasc">Nascimento : </label><select class="form-control" style="margin-bottom:10px;" name="anouser"><option> ANO </option>';$x=2018; while ($x >= 1900) {$this->somacontent .= '<option value="'.$x.'"">'.$x.'</option>';$x--;};$this->somacontent .= '</select> <select class="form-control" style="margin-bottom:10px;" name="mesuser"><option> MÊS </option>';$meses = array("01"=>"Janeiro", "02"=>"Fevereiro", "03"=>"Março", "04"=>"Abril", "05"=>"Maio", "06"=>"Junho", "07"=>"Julho", "08"=>"Agosto", "09"=>"Setembro", "10"=>"Outubro", "11"=>"Novembro", "12"=>"Dezembro");foreach ($meses as $key => $value) {$this->somacontent .= '<option value="'.$key.'">'.$value.'</option>';};$this->somacontent .= '</select> <select class="form-control" style="margin-bottom:10px;" name="diauser"><option> DIA </option>';$x=1;while ($x <= 31) {$this->somacontent .= '<option value="'.$x.'">'.$x.'</option>';$x++;};$this->somacontent .= '</select></div>';
         return $this->somacontent;
     }
     public function render(){
-    echo '<div class="form-inline" style="margin-left:10px; margin-right: 10px"><label for="nasc">Nascimento : </label><select class="form-control" name="anouser" style="margin-bottom:10px;"><option> ANO </option>';$x=2017; while ($x >= 1900) {echo '<option value="'.$x.'"">'.$x.'</option>';$x--;};echo '</select> <select class="form-control" name="mesuser" style="margin-bottom:10px;"><option> MÊS </option>';$meses = array("01"=>"Janeiro", "02"=>"Fevereiro", "03"=>"Março", "04"=>"Abril", "05"=>"Maio", "06"=>"Junho", "07"=>"Julho", "08"=>"Agosto", "09"=>"Setembro", "10"=>"Outubro", "11"=>"Novembro", "12"=>"Dezembro");foreach ($meses as $key => $value) {echo '<option value="'.$key.'">'.$value.'</option>';};echo '</select> <select class="form-control" name="anouser" style="margin-bottom:10px;"><option> DIA </option>';$x=1;while ($x <= 31) {echo '<option value="'.$x.'">'.$x.'</option>';$x++;};echo '</select></div>';
+    echo '<div class="form-inline" style="margin-left:10px; margin-right: 10px"><label for="nasc">Nascimento : </label><select class="form-control" name="anouser" style="margin-bottom:10px;"><option> ANO </option>';$x=2018; while ($x >= 1900) {echo '<option value="'.$x.'"">'.$x.'</option>';$x--;};echo '</select> <select class="form-control" name="mesuser" style="margin-bottom:10px;"><option> MÊS </option>';$meses = array("01"=>"Janeiro", "02"=>"Fevereiro", "03"=>"Março", "04"=>"Abril", "05"=>"Maio", "06"=>"Junho", "07"=>"Julho", "08"=>"Agosto", "09"=>"Setembro", "10"=>"Outubro", "11"=>"Novembro", "12"=>"Dezembro");foreach ($meses as $key => $value) {echo '<option value="'.$key.'">'.$value.'</option>';};echo '</select> <select class="form-control" name="anouser" style="margin-bottom:10px;"><option> DIA </option>';$x=1;while ($x <= 31) {echo '<option value="'.$x.'">'.$x.'</option>';$x++;};echo '</select></div>';
     }
 }
 class submit{
