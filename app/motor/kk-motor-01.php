@@ -10,6 +10,31 @@ $_SESSION["load"]=parse_ini_file("config.ini.php", true);
 Arquivo .ini com configurações do banco de dados
 encarregado de armazenar as informações de confuguração do banco de dados tanto off-line quanto on-line
 **/
+function creadPostValid($post){
+    /*
+    Data criação: 23/06/2018
+    */
+    foreach ($post as $key => $value) {
+        if ($value ? $value : $value = "");
+    };
+    return $post;
+}
+
+function getPost($post, $query){
+    /*
+    Data criação: 22/06/2018
+    Descrição: tenta montar de forma automatizada a query de inserção
+    */
+            $dados = [];
+            foreach ($post as $key => $value) {
+                $value = '"'.$value.'"';
+                array_push($dados, $value);
+            }
+            $prequery = implode(",", $dados);
+            $query = "call " . $query. " (". $prequery.")";
+            return $query;
+        }
+
 function includeFile($filelist, $path = ''){
     $include = [];
     foreach ($filelist as $key => $value) {
@@ -82,8 +107,8 @@ function fastquery_messages($sql, $mensagem1, $mensagem2){
     Nome:           fastquery_messages
     Função:         executa uma inserção no banco de dados. basicamente para auditorias.
     @param sql->    string (sql) de inserção
-    Data de criação: 15/11/2017
-    Última alteração: 15/11/2017
+    Data de criação:    15/11/2017
+    Última alteração:   15/11/2017
 **/
     $pdo = new pdo($_SESSION["load"]["banco_de_dados"]["driver"] . ":dbname=". $_SESSION["load"]["banco_de_dados"]["banco"] . ";charset=UTF8;host=" . $_SESSION["load"]["banco_de_dados"]["host"] . ";" , $_SESSION["load"]["banco_de_dados"]["usuario"], $_SESSION["load"]["banco_de_dados"]["senha"]);
     //$pdo->prepare($sql);
