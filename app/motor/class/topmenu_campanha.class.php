@@ -79,13 +79,17 @@ class topmenu_campanha {
 			$eleitor = new li_item;
 			$eleitor->text = "Simpatizantes";
 			$eleitor->link = "/create/eleitor/";
-			$tarefas = new li_item;
-			$tarefas->text = "Tarefas";
-			$tarefas = new li_item;
-			$tarefas->text = "Tarefas";
-		$cadastro->subitem = [$assessor, $eleitor, $tarefas];
+		$cadastro->subitem = [$assessor, $eleitor];
 
-	$nav->itensleft = [$cadastro, $relatorio/*, $mapa */, $message];
+		$tarefas = new li_dropdown;
+		$tarefas->text = "Tarefas";
+		$tarefas->iconclass = "fa fa-cogs";
+			$add = new li_item;
+			$add->text = "Adicionar tarefa";
+			$add->link = "/tarefas/novatarefa/";
+		$tarefas->subitem = [$add];
+
+	$nav->itensleft = [$cadastro, $relatorio/*, $mapa */, $message, $tarefas];
 	$nav->itensright = [$use_info];
 			$bottombar = new navBottom;
 			$bottombar->messagesCount = $dataMsg["novas"];

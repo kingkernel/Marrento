@@ -15,7 +15,7 @@ class cardshow {
 	public $imagemlogin = "https://scontent.ffor11-1.fna.fbcdn.net/v/t1.0-1/p160x160/26907727_1762258727181599_4249099335281278384_n.jpg?oh=3b98a1ca449a20aba8f1f90afb63a086&oe=5AEADBDB";
   public $downText = "";
   public $style = "default";                                 //cores padrão de classes do bootstrap
-  public $headerTitle = "";
+  public $headerTitle = "WWWW";
   public $headerIcon = "";
   public $headerLink = "#";
   public $headerBigIcon = "";
@@ -24,14 +24,14 @@ class cardshow {
   public $rigthInfo = "";
   public $bigIconLeft = "";
   public $bigIconLeftBadge = "";
-  public $bigIconLeftTitle = "";
+  public $bigIconLeftTitle = "QQQQQ";
   public $bigIconCenter = "";
   public $bigIconCenterBadge = "";
   public $bigIconRight = "";
   public $bigIconRightBadge = "";
-  public $bigIconCenterTitle = "";
-  public $bigIconRightTitle = "";
-  public $formTitle = "";
+  public $bigIconCenterTitle = "YYYY";
+  public $bigIconRightTitle = "TTTTT";
+  public $formTitle="";
   public $formBtn = "default";
   public $formBtnText = "login";
   public $formFooter = "";
