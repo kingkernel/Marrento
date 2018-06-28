@@ -30,7 +30,7 @@ spl_autoload_register(function ($class_name) {
 	};
 });
 // Arquivo com as funções principais e básicas do sistema
-require(PATHMOTOR."kk-motor-01.php");
+require(PATHMOTOR."engine.php");
 //	se existir o conteudo digitado, aceite, se não, o conteudo se torna "index/index"
 if (isset($_GET["urldigitada"]) ? $_GET["urldigitada"] . "/" : $_GET["urldigitada"] = "index/index");
 //	separe o que foi digitado, por barras e transforme a variavel em array, convertendo em minúsculo

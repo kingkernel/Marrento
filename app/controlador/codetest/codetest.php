@@ -8,7 +8,7 @@ class codetest{
 	}
 	public function index(){
 		$this->page->bodycontent = "foda-se";
-		$this->page->render();
+		$this->page->help();
 	}
 }
 ?>
