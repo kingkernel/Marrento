@@ -11,11 +11,25 @@ primary key(id))engine=innodb charset=utf8;
 create table url(
 id bigint auto_increment,
 url varchar(64),
+unique(url),
 primary key(id))engine=innodb charset=utf8;
 
+-- #####################################################################
+--		adicionar log
+-- #####################################################################
 delimiter //
 	create procedure sp_add_log(arg_acao text, arg_diaevento datetime, arg_info text)
 		begin
 			insert into log(acao, diaevento, info) values (arg_acao, arg_diaevento, arg_info);
+		end //
+delimiter ;
+
+-- #####################################################################
+--		adicionar url de busca
+-- #####################################################################
+delimiter //
+	create procedure sp_add_url(arg_acao text, arg_diaevento datetime, arg_info text)
+		begin
+			insert into url(acao, diaevento, info) values (arg_acao, arg_diaevento, info);
 		end //
 delimiter ;
