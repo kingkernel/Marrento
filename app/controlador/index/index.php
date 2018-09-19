@@ -5,6 +5,7 @@ class index {
 	}
 	public function index(){
 		echo "Ola mundo Marrento!!!";
+		echo phpinfo();
 	}
 }
 ?>

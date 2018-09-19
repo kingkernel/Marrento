@@ -37,3 +37,10 @@ delimiter //
 			insert into url(acao, diaevento, info) values (arg_acao, arg_diaevento, info);
 		end //
 delimiter ;
+
+delimiter //
+	create procedure sp_up_url()
+	begin
+		
+	end //
+delimiter ;
