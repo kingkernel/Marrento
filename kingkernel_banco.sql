@@ -13,10 +13,7 @@ info text,
 primary key(id))engine=innodb charset=utf8;
 
 create table url(
-id bigint auto_increment,
-url varchar(64),
-unique(url),
-primary key(id))engine=innodb charset=utf8;
+url varchar(64) primary key)engine=innodb charset=utf8;
 
 -- #####################################################################
 --		adicionar log
@@ -37,7 +34,9 @@ delimiter //
 			insert into url(acao, diaevento, info) values (arg_acao, arg_diaevento, info);
 		end //
 delimiter ;
-
+-- #####################################################################
+--		update url de busca
+-- #####################################################################
 delimiter //
 	create procedure sp_up_url(arg_oldurl varchar(64), arg_newurl varchar(64))
 	begin
