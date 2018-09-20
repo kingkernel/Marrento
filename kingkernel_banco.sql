@@ -39,8 +39,8 @@ delimiter //
 delimiter ;
 
 delimiter //
-	create procedure sp_up_url()
+	create procedure sp_up_url(arg_oldurl varchar(64), arg_newurl varchar(64))
 	begin
-		
+		update url set url=arg_newurl where url=arg_oldurl;
 	end //
 delimiter ;
