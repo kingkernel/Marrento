@@ -13,7 +13,10 @@ info text,
 primary key(id))engine=innodb charset=utf8;
 
 create table url(
-url varchar(64) primary key)engine=innodb charset=utf8;
+url varchar(64),
+active boolean  default 0,
+primary key(url),
+)engine=innodb charset=utf8;
 
 -- #####################################################################
 --		adicionar log
@@ -43,3 +46,13 @@ delimiter //
 		update url set url=arg_newurl where url=arg_oldurl;
 	end //
 delimiter ;
+-- #####################################################################
+--		delete url de busca
+-- #####################################################################
+delimiter //
+	create procedure sp_del_url(arg_durl varchar(64))
+	begin
+		update url set ativo=0 where url=arg_url;
+	end //
+delimiter ;
+
