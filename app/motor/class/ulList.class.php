@@ -7,9 +7,13 @@ class ulList {
 	public $liItens = [];
 	public $class;
 	public $id;
+	public $content;
 
 	public function __construct(){
-		
+
+	}
+	public function html(){
+
 	}
 }
 
