@@ -5,7 +5,7 @@ class index {
 		$this->page = new page_site;
 			$interface = new bootstrapInterface;
 
-		$this->page->headersinclude = includeHeader([$interface->cdnCss, 'https://code.jquery.com/jquery-3.3.1.slim.min.js', $interface->cdnJs]);
+		$this->page->headersinclude = includeHeader([$interface->cdnCss, 'https://code.jquery.com/jquery-3.3.1.slim.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js',$interface->cdnJs]);
 		$this->page->jsendbody = '<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script><script type="text/javascript">
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
@@ -28,12 +28,14 @@ class index {
 		return $this;
 	}
 	public function index(){
+		/*
 		$this->page->bodycontent = '
 <style>
 /*
     DEMO STYLE
-*/
 
+
+<!--
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: \'Poppins\', sans-serif;
@@ -80,9 +82,12 @@ a:focus {
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
------------------------------------------------------ */';
+----------------------------------------------------- 
+--> ' ;
+*/
 $menu = new sideMenuOcult;
-$this->page->bodycontent .=$menu->css.
+$this->page->headersinclude .= '<style>'.$menu->css.'</style>';
+
 '/* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -98,10 +103,11 @@ $this->page->bodycontent .=$menu->css.
 }
 
 		</style>
+		';
 
+$this->page->bodycontent =
 
-
-		<div class="wrapper">
+		'<div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div id="dismiss">
