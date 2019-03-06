@@ -10,6 +10,7 @@ class bootstrapInterface{
 	public $cdnHost = 'cdnjs.cloudflare.com';
 	public $protocol = 'https';
 	public $path = 'ajax/libs/twitter-bootstrap';
+	public $css = '';
 
 	public function __construct(){
 		if($_SESSION["load"]["interface"]["MODE_INTERFACE"]=="online"){
