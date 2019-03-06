@@ -8,6 +8,8 @@
 ###################################################################################################
 [interface]
 framework = bootstrap
+MODE_INTERFACE=online
+version = 4.0.0-alpha.4
 
 [banco_de_dados]
 driver=mysql
@@ -28,5 +30,6 @@ comandos=database
 comandos=url
 [index]
 dbstart=0
+
 **/
 ?>

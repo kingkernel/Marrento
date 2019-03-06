@@ -3,105 +3,346 @@ class index {
 	public $page;
 	public function __construct(){
 		$this->page = new page_site;
-			$metro = new metroInterface;
-		$this->page->headersinclude = $metro->cdn;
-		$this->page->jsendbody = '<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script href="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>';
+			$interface = new bootstrapInterface;
+
+		$this->page->headersinclude = includeHeader([$interface->cdnCss, 'https://code.jquery.com/jquery-3.3.1.slim.min.js', $interface->cdnJs]);
+		$this->page->jsendbody = '<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script><script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $(\'#dismiss, .overlay\').on(\'click\', function () {
+                $(\'#sidebar\').removeClass(\'active\');
+                $(\'.overlay\').removeClass(\'active\');
+            });
+
+            $(\'#sidebarCollapse\').on(\'click\', function () {
+                $(\'#sidebar\').addClass(\'active\');
+                $(\'.overlay\').addClass(\'active\');
+                $(\'.collapse.in\').toggleClass(\'in\');
+                $(\'a[aria-expanded=true]\').attr(\'aria-expanded\', \'false\');
+            });
+        });
+    </script>';
 		return $this;
 	}
 	public function index(){
-		$this->page->bodycontent = '<div class="container-fluid"><div class="example p-0" style="height: 500px;">
-                    <div data-role="navview" data-compact="md" data-expanded="lg" data-toggle="#pane-toggle" class="navview compact-md expanded-lg" data-role-navview="true">
-                        <nav class="navview-pane">
-                            <button class="pull-button">
-                                <span class="mif-menu"></span>
-                            </button>
+		$this->page->bodycontent = '
+<style>
+/*
+    DEMO STYLE
+*/
 
-                            <div class="suggest-box"><div class="input"><input type="text" data-role="input" data-clear-button="false" data-search-button="true" class="" data-role-input="true"><div class="button-group"><button class="button input-search-button" tabindex="-1" type="submit"><span class="default-icon-search"></span></button></div></div>
-                                
-                                <button class="holder">
-                                    <span class="mif-search"></span>
-                                </button>
-                            </div>
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: \'Poppins\', sans-serif;
+    background: #fafafa;
+}
 
-                            <ul class="navview-menu" style="height: calc(100% - 152px);">
-                                <li>
-                                    <a href="#">
-                                        <span class="icon"><span class="mif-home"></span></span>
-                                        <span class="caption">Home</span>
-                                    </a>
-                                </li>
+p {
+    font-family: \'Poppins\', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
 
-                                <li class="item-separator"></li>
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
 
-                                <li class="item-header">Main pages</li>
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
 
-                                <li>
-                                    <a href="#">
-                                        <span class="icon"><span class="mif-apps"></span></span>
-                                        <span class="caption">Apps</span>
-                                    </a>
-                                </li>
-                                <li class="active">
-                                    <a href="#">
-                                        <span class="icon"><span class="mif-gamepad"></span></span>
-                                        <span class="caption">Games</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="dropdown-toggle">
-                                        <span class="icon"><span class="mif-music"></span></span>
-                                        <span class="caption">Music</span>
-                                    </a>
-                                    <ul class="navview-menu" data-role="dropdown" style="height: calc(100% - 152px); display: none;" data-role-dropdown="true">
-                                        <li>
-                                            <a href="#">
-                                                <span class="icon"><span class="mif-gamepad"></span></span>
-                                                <span class="caption">Games</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="icon"><span class="mif-film"></span></span>
-                                                <span class="caption">Movies</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="disabled">
-                                    <a href="#">
-                                        <span class="icon"><span class="mif-images"></span></span>
-                                        <span class="caption">Images</span>
-                                    </a>
-                                </li>
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
 
-                                <li class="item-separator"></li>
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
 
-                                <li>
-                                    <a href="#">
-                                        <span class="icon"><span class="mif-folder"></span></span>
-                                        <span class="caption">Documents</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
 
-                        <div class="navview-content pl-4-md pr-4-md">
-                            <h1>
-                                <button id="pane-toggle" class="button square d-none-md"><span class="mif-menu"></span></button>
-                                What is?
-                            </h1>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            </p><div class="panel" id="23e9c485-ab2f-45d4-a49e-515a616fbd46" style="width: 240px;"><div data-role="panel" data-title-caption="Panel title" data-title-icon="<span class="mif-apps"></span>" data-width="240" data-collapsible="true" data-draggable="true" class="panel-content" data-role-panel="true">
-                                Raptus capios ducunt ad genetrix. Joy doesn’t beautifully respect any believer — but the power is what flies.
-                            </div><div class="panel-title"><span class="caption">Panel title</span><span class="mif-apps icon"></span><span class="dropdown-toggle marker-center active-toggle"></span></div></div>
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100vh;
+    z-index: 999;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
 
-                            
-                        </div>
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #7386D5;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#dismiss:hover {
+    background: #fff;
+    color: #7386D5;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+		</style>
+
+
+
+		<div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div id="dismiss">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
                     </div>
-                </div></div>';
-        $this->page->scriptsendpage = 'var nv = $("#navview1").data("navview");nv.open(); nv.close();';
+                </div>
+            </nav>
+
+            <h2>Collapsible Sidebar Using Bootstrap 4</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h3>Lorem Ipsum Dolor</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+';
+        $this->page->scriptsendpage = 'var nv = $("#navview1").data("navview");';
 		$this->page->render();
 	}
 }

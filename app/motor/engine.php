@@ -1,7 +1,7 @@
 <?php 
 /**
 Criação 15/11/2017
-Última Alteração: 11/03/2018
+Última Alteração: 05/02/2019
 Autor: Daniel J. Santos
 E-mail: daniel.santos.ap@gmail.com
 **/
@@ -57,6 +57,34 @@ function includeFile($filelist, $path = ''){
     };
     return $include;
 };
+
+function includeHeader($files = []){
+    $include = [];
+    foreach ($files as $key => $value) {
+    $file = explode('.', $value);
+    $quant = (count($file))-1;
+    switch ($file[$quant]) {
+                  case 'js':
+                    $file = '<script type="text/javascript" src="'.$value.'"></script>';
+                    array_push($include, $file);
+                      break;
+                  case 'css':
+                    $file = '<link rel="stylesheet" type="text/css" href="'.$value.'" />';
+                    array_push($include, $file);
+                      break;
+                  default:
+                    // $file = 'inlcude("'.$value.'")';
+                    //  array_push($include, $file);
+                      break;
+              };
+    //[0] => https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css
+    //[1] => https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/js/bootstrap.min.js
+        }
+    $include = implode("", $include);
+    return $include;
+};
+
+
 function convertToCols($resultSet){
     $data = $resultSet->fetch(PDO::FETCH_ASSOC);
     $set ='<tr><td>';

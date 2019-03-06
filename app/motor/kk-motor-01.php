@@ -57,6 +57,12 @@ function includeFile($filelist, $path = ''){
     };
     return $include;
 };
+
+function includeHeader($files = []){
+    foreach ($files as $key => $value) {
+    print_r($files)   ;
+        }
+}
 function convertToCols($resultSet){
     $data = $resultSet->fetch(PDO::FETCH_ASSOC);
     $set ='<tr><td>';
