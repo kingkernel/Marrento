@@ -3,7 +3,7 @@ class li_item{
 	/**
 	Classe: li_item || classe responsavel pelos botões do navbar
 	Data criação: 01/12/2016
-	Ultima alteração: 03/12/2016
+	Ultima alteração: 07/03/2019
 	Autor: Daniel J. Santos
 	Email: Daniel.santos.ap@gmail.com
 	Atributos:
@@ -13,25 +13,26 @@ class li_item{
 
 	**/
 	public $class;
-	public $link;
+	public $link = "#";
 	public $iconclass;
 	public $text;
 	public $id;
 	public $linkextra;
+	public $aClass = "";
 	public function __construct(){
-		if(!isset($this->class)){$this->class="";};if(!isset($this->link)){$this->link="#";};if(!isset($this->iconclass)){$this->iconclass="";};
+		if(!isset($this->class)){$this->class="";};if(!isset($this->iconclass)){$this->iconclass="";};
 	}
 	public function render(){
 		/**
 			classe finalizada
 		**/
-		echo '<li class="'.$this->class.'" id="'.$this->id.'"><a href="'.$this->link.'" '.$this->linkextra.'><span class="'.$this->iconclass.'"></span> '.$this->text.'</a></li>';
+		echo '<li class="'.$this->class.'" id="'.$this->id.'"><a class="'.$this->aClass.'" href="'.$this->link.'" '.$this->linkextra.'><span class="'.$this->iconclass.'"></span> '.$this->text.'</a></li>';
 	}
 	public function html(){
 		/**
 			classe finalizada
 		**/
-		return '<li class="'.$this->class.'" id="'.$this->id.'"><a href="'.$this->link.'" '.$this->linkextra.'><span class="'.$this->iconclass.'"></span> '.$this->text.'</a></li>';
+		return '<li class="'.$this->class.'" id="'.$this->id.'"><a class="'.$this->aClass.'" href="'.$this->link.'" '.$this->linkextra.'><span class="'.$this->iconclass.'"></span> '.$this->text.'</a></li>';
 	}
 }
 ?>
