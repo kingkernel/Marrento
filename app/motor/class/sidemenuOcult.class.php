@@ -5,6 +5,7 @@
 		public $titleIcon = 'fas fa-arrow-left';
         public $buttonText = "Menu Oculto";
         public $buttonIcon = "fas fa-align-left";
+        public $subtitle = "Sub-Movel";
 		public function __construct(){
 			return $this->css;
 		}
@@ -19,7 +20,7 @@
                 <h3>'.$this->title.'</h3>
             </div>
             <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
+                <p>'.$this->subtitle.'</p>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
