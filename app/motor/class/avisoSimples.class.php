@@ -2,14 +2,17 @@
 class avisoSimples{
 	public $titleSize = "2";
 	public $title;
-	public $text=[];
+	public $text;
+	public $content;
 	public function __construct(){
 
 	}
-	public function rende(){
-		echo '<h'.$this->titleSize.'>'.$this->title.'</h'.$this->titleSize.'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>';
+	public function render(){
+		echo '<h'.$this->titleSize.'>'.$this->title.'</h'.$this->titleSize.'><p>'.$this->text.'</p>';
+	}
+	public function html(){
+		$this->content = '<h'.$this->titleSize.'>'.$this->title.'</h'.$this->titleSize.'><p>'.$this->text.'</p>';
+		return $this->content;
 	}
 }
 ?>

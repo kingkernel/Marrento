@@ -13,14 +13,14 @@ version = 4.0.0-alpha.4
 
 [banco_de_dados]
 driver=mysql
-banco=kingkern_iceberg
-usuario=kingkern_iceberg
-senha=claudi741099@@
-host=138.128.175.66
+banco=xamasti
+usuario=root
+senha=
+host=127.0.0.1
 
 [offlinedb]
 driver=mysql
-banco=artcell
+banco=xamasti
 usuario=root
 senha=
 host=127.0.0.1
