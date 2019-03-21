@@ -46,7 +46,7 @@ prob varchar(50) primary key)engine=innodb charset=utf8;
 
 insert into prob_category values ("Impressora não imprime"), ("Atualizar o SGV"),
 ("Sem internet"), ("Computador Travando"), ("Computador lento"),
-("Troca de Equipamento"), ("Headset mudo"), ("outros");
+("Troca de Equipamento"), ("Headset mudo"), ("outros"), ("Mudar usuário de lugar");
 
 create table teccalled (
 id int auto_increment,

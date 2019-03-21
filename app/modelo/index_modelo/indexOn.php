@@ -16,7 +16,7 @@ $body = '<div class="container">
              <tr>
                 <td colspan="1">
                    <form class="well form-horizontal">
-                      <fieldset>
+                      <fieldset><legend>Fila de Chamados</legend>
                          <div class="form-group">
                             <label class="col-md-4 control-label">Full Name</label>
                             <div class="col-md-8 inputGroupContainer">
@@ -81,7 +81,7 @@ $body = '<div class="container">
                 </td>
                 <td colspan="1">
                    <form class="well form-horizontal">
-                      <fieldset>
+                      <fieldset><legend>Chamados Técnicos</legend>
                          <div class="form-group">
                             <label class="col-md-4 control-label">Full Name</label>
                             <div class="col-md-8 inputGroupContainer">
