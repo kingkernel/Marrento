@@ -11,7 +11,7 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
 
 	$topmenu->itensright=[$use_info];
 $body = '<div class="container">
-       <table class="table table-striped">
+       <table class="table">
           <tbody>
              <tr>
                 <td colspan="1">
@@ -144,7 +144,7 @@ $body = '<div class="container">
                       </fieldset>
                    </form>
                 </td>
-             </tr>
+            </tr>
           </tbody>
        </table>
     </div>
