@@ -2,7 +2,7 @@
 class index {
 	public $page;
 	public function __construct(){
-		$this->page = new page_site;
+		$this->page = new page;
 		return $this;
 	}
 	public function index(){

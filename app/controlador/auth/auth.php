@@ -17,8 +17,8 @@ class auth {
 		$this->password = sha1(md5(sha1($_POST["snhpwd"])));
 		//cria a query
 		$sql = "call sp_login(\"$this->user\", \"$this->password\")";
-		echo $sql;
-		$dados = retornadbinfo($sql);
+		$dados = queryDb($sql);
+		print_r($dados);
 		$linha = $dados->fetch(PDO::FETCH_ASSOC);
 		if ($linha["existe"] == 1){
 			$_SESSION["LOGADO"]=TRUE;
