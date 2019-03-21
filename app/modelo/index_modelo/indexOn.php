@@ -147,10 +147,7 @@ $body = '<div class="container">
             </tr>
           </tbody>
        </table>
-    </div>
-<script type="text/javascript">
-
-</script>';
+    </div>';
 
 
 $page->bodycontent = $topmenu->html().$body;
