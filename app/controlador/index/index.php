@@ -3,37 +3,16 @@ class index {
 	public $page;
 	public function __construct(){
 		$this->page = new page_site;
-			$interface = new bootstrapInterface;
-
-		$this->page->headersinclude = includeHeader([$interface->cdnCss, 'https://use.fontawesome.com/releases/v5.7.2/css/all.css', 'https://code.jquery.com/jquery-3.3.1.slim.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js',$interface->cdnJs]);
-		$this->page->jsendbody = '<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script><script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-
-            $(\'#dismiss, .overlay\').on(\'click\', function () {
-                $(\'#sidebar\').removeClass(\'active\');
-                $(\'.overlay\').removeClass(\'active\');
-            });
-
-            $(\'#sidebarCollapse\').on(\'click\', function () {
-                $(\'#sidebar\').addClass(\'active\');
-                $(\'.overlay\').addClass(\'active\');
-                $(\'.collapse.in\').toggleClass(\'in\');
-                $(\'a[aria-expanded=true]\').attr(\'aria-expanded\', \'false\');
-            });
-        });
-    </script>';
 		return $this;
 	}
 	public function index(){
-$menu = new sideMenuOcult;
-$this->page->headersinclude .= '<style>'.$menu->css.'</style>';
-
-$this->page->bodycontent = $menu->html();
-        $this->page->scriptsendpage = 'var nv = $("#navview1").data("navview");';
-		$this->page->render();
+        if (!isset($_SESSION["LOGADO"])){
+            $login = new simpleLoginBox;
+            $this->page->bodycontent = $login->html();
+            $this->page->render();
+        } else{
+            include PATHMODELO . get_class(). "_modelo/".get_class()."On.php";
+        };
 	}
 }
 /*

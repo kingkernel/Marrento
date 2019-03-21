@@ -8,7 +8,7 @@ class simpleLoginBox {
 	public $LoginText = "Login";
 	public $bntText = "ENTRAR";
 	public $addContent;
-	public $action = "auth/carrier/passenger/";
+	public $action = "auth/";
 	public $userInput = "user";
 	public $snhpwd = "snhpwd";
 	public $placeholders = ["Usuário", "Senha"];
