@@ -56,7 +56,13 @@ function compactada($template){
     $compatada = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", file_get_contents($template));
     return $compatada;
 };
+function fontAwesome_($pastas){
+    return '<link rel="stylesheet" href="'.$pastas.'public/css/font-awesome/font-awesome.min.css">';
+};
 
+
+
+###################################################################################################
 function creadPostValid_($post){
     /*
     Data criação: 23/06/2018
@@ -211,9 +217,7 @@ function retornaqueryinfo_($dados){
         };
     return $result;
 };
-function fontawesome_($pastas){
-    return '<link rel="stylesheet" href="'.$pastas.'public/css/font-awesome/font-awesome.min.css">';
-};
+
 class tag_{
     /**
     Data de criação: 15/11/2017
