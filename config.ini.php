@@ -31,5 +31,9 @@ comandos=url
 [index]
 dbstart=0
 
+
+[company]
+name=Acerta Multiservices
+
 **/
 ?>
