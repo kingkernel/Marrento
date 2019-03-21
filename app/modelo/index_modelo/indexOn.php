@@ -1,8 +1,8 @@
 <?php
 $page = new page;
 	$topmenu =  new topnav;
-	$topmenu->brand = $_SESSION["load"]["company"]["name"];
-$page->headersinclude .= urlcss();
+	$topmenu->brand = $_SESSION["load"]["company"]["name"]. ' <span class="fa fa-bullhorn"></span>';
+$page->headersinclude .= fontAwesome(urlcss($_GET));
 $page->bodycontent = $topmenu->html();
 $page->render();
 /*
