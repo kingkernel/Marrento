@@ -36,7 +36,6 @@ class auth {
 		session_destroy();
 		header("Location: /");
 		echo "<script>document.reload();</script>";
-		echo "saiu";
 	}
 	public function checkAuth(){
 		if(!isset($_SESSION["LOGADO"]) || !isset($_SESSION["usuario"])){

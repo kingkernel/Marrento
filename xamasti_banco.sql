@@ -1,7 +1,7 @@
 create database xamasti character set=utf8;
 
 use xamasti;
-
+ -- usuarios
 create table persons (
 id int auto_increment,
 nameperson varchar(50),
@@ -38,7 +38,6 @@ delimiter //
 			select count(*) as existe from persons where nameperson=arg_user and keyword=arg_passwd and active=1;
 		end//
 delimiter ;
-
 
 
 create table prob_category(
