@@ -5,7 +5,7 @@
   	Funções relacionados ao controlador geral do MVC
   	Criador: Daniel José dos Santos
  	Criação: 15/11/2017
- 	Últimas alterações: 14/01/2018
+ 	Últimas alterações: 21/03/2019
 ###################################################################################################
 **/
 //	inicializa a sessão para todo o site
@@ -21,10 +21,18 @@ define ("PATHMOTOR", __DIR__ . "/app/motor/");
 define ("PUBLICDIR", "/public/");
 define ("FONTES", __DIR__. "/public/fonts/net/");
 define ("CLASSES", __DIR__. "/app/motor/class/");
-//	faz a leitura automática de classes. todas classes do sitema devem estar nessa pasta
+//	faz a leitura automática de classes. todas classes do sitema devem estar nessas pastas
+//class
+//class/native
+//class/native/front-end
+//class/native/back-end
 spl_autoload_register(function ($class_name) {
 	if (file_exists(PATHMOTOR . "class/" . $class_name . '.class.php')){
 		include PATHMOTOR . "class/" . $class_name . '.class.php';
+	} elseif (file_exists(PATHMOTOR . "class/native/front-end/" . $class_name . '.class.php')) {
+		include PATHMOTOR . "class/native/front-end/" . $class_name . '.class.php';
+	} elseif(file_exists(PATHMOTOR . "class/native/back-end/" . $class_name . '.class.php')){
+		include PATHMOTOR . "class/native/back-end/" . $class_name . '.class.php';
 	} else {
 		include PATHMOTOR . "class/native/" . $class_name . '.class.php';
 	};
