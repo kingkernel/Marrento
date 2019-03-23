@@ -25,7 +25,7 @@ class page{
 	}
 	public function render(){
 		$data ='<!DOCTYPE html><html lang="'.$this->language.'"><head><meta charset="utf-8">'.$this->outrosmeta.'<title>'.$this->titlepage.'</title><meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">'.$this->headersinclude.'</head><body '.$this->bodyextras.'>'.$this->bodycontent.'</body>'.$this->jsendbody.'<script type="text/javascript">'.$this->scriptsendpage.'</script>'.$this->posScript.'</html>';
-		printf(redux($data));
+		echo redux($data);
 	}
 	public function help(){
 		$content = getjs("./".PUBLICDIR."thisHelp/".get_class(). ".html");
