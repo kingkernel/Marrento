@@ -3,7 +3,7 @@ class page{
 	/**
 	Classe: page || classe que gera a página
 	Data criação: 03/12/2016
-	Ultima alteração: 28/06/2018
+	Ultima alteração: 22/03/2019
 	Autor: Daniel J. Santos
 	Email: Daniel.santos.ap@gmail.com
 

@@ -43,7 +43,6 @@ class auth {
 			header("Location: /");
 			echo "<script>document.reload();</script>";
 		}
-	}
-	
+	}	
 }
 ?>
