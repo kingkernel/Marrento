@@ -23,9 +23,14 @@ class formChildItem{
 		echo '<div class="form-group"><label class="col-md-4 control-label">'.$this->label.'</label><div class="col-md-8 inputGroupContainer"><div class="input-group"><span class="input-group-addon"><i class="'.$this->iconChild.'"></i></span><input id="'.$this->inputId.'" name="'.$this->inputName.'" placeholder="'.$this->placeHolder.'" class="form-control" required="true" value="'.$this->inputValue.'" type="'.$this->inputType.'" '.$this->inputExtras.'></div></div></div>';
 	}
 	public function html(){
+		$icone = '<span class="input-group-addon"><i class="'.$this->iconChild.'" aria-hidden="true"></i></span>';
 		switch ($this->inputType) {
 			case "select":
-			$this->content = '<div class="form-group"><label class="col-md-4 control-label">'.$this->label.'</label><div class="col-md-8 inputGroupContainer"><div class="input-group"><span class="input-group-addon"><i class="'.$this->iconChild.'"></i></span><select id="'.$this->inputId.'" name="'.$this->inputName.'" placeholder="'.$this->placeHolder.'" class="form-control" required="true" value="'.$this->inputValue.'" type="'.$this->inputType.'" '.$this->inputExtras.'></select></div></div></div>';
+			$this->content = '<div class="form-group"><label class="col-md-4 control-label">'.$this->label.'</label><div class="col-md-8 inputGroupContainer"><div class="input-group">';
+			if ($this->sideInput == "right"){$this->content.= $icone;};
+			$this->content .= '<select id="'.$this->inputId.'" name="'.$this->inputName.'" placeholder="'.$this->placeHolder.'" class="form-control" required="true" value="'.$this->inputValue.'" type="'.$this->inputType.'" '.$this->inputExtras.'></select>';
+			if ($this->sideInput == "left"){$this->somacontent.= $icone;};
+			$this->content .= '</div></div></div>';
 				break;
 			
 			default:
