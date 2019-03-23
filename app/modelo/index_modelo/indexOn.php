@@ -20,18 +20,29 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
     $campo9 = new formChildItem;
 
   $topmenu->itensright=[$use_info];
-  $body = '<div class="container"><table class="table"><tbody><tr><td colspan="1">';
+$body = '<div class="container"><table class="table"><tbody><tr><td colspan="1">';
     $panel_0 = new fieldsetPanel;
     $panel_0->formAction = "ativa/";
+    $panel_0->fieldsetLegend = "Fila de chamados";
     $panel_0->formItens = [$campo1, $campo2, $campo3, $campo4, $campo5, $campo6, $campo7, $campo8, $campo9];
     $body .= $panel_0->html();
 $body .= '</td><td colspan="1">';
+    $open_called1 = new formChildItem;
+    $open_called1->label = "Usuário:";
+    $open_called1->inputName = "usuario";
+    $open_called1->inputValue = $_SESSION["usuario"];
+    $open_called1->inputExtras = "disabled";
+
     $panel_1 = new fieldsetPanel;
     $panel_1->formAction = "ativa/";
-    $panel_1->formItens = [$campo1, $campo2, $campo3, $campo4, $campo5, $campo6, $campo7, $campo8, $campo9];
+    $panel_1->fieldsetLegend = "Abrir Chamados:";
+    $panel_1->formItens = [$open_called1];
     $body .= $panel_1->html();
     $body .='</td></tr></tbody></table></div>';
 
 $page->bodycontent = $topmenu->html().$body;
 $page->render();
+$input = new inputAddOn;
+$input->sideInput ="right"; 
+$input->render();
 ?>
