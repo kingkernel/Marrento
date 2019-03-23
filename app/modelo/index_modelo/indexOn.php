@@ -32,6 +32,7 @@ $body .= '</td><td colspan="1">';
     $open_called1->inputName = "usuario";
     $open_called1->inputValue = $_SESSION["usuario"];
     //$open_called1->inputExtras = "disabled";
+    $open_called1->sideInput = "right";
     $open_called1->inputType = "select";
 
     $panel_1 = new fieldsetPanel;
