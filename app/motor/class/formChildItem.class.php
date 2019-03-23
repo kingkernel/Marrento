@@ -14,7 +14,7 @@ class formChildItem{
 	public $content;
 	public $sideInput ="right"; 							// right || left: default "right"
 	public $inputType = "text";
-	public $seelctItens=[];
+	public $selectItens=[];
 	public $iconVisible = "false";
 	
 	public function __construct(){
@@ -38,7 +38,11 @@ class formChildItem{
 			case "select":
 			$this->content = '<div class="form-group"><label class="col-md-4 control-label">'.$this->label.'</label><div class="col-md-8 inputGroupContainer"><div class="input-group">';
 			if ($this->sideInput == "right"){$this->content.= $icone;};
-			$this->content .= '<select id="'.$this->inputId.'" name="'.$this->inputName.'" placeholder="'.$this->placeHolder.'" class="form-control" required="true" value="'.$this->inputValue.'" type="'.$this->inputType.'" '.$this->inputExtras.'></select>';
+			$this->content .= '<select id="'.$this->inputId.'" name="'.$this->inputName.'" placeholder="'.$this->placeHolder.'" class="form-control" value="'.$this->inputValue.'" '.$this->inputExtras.'>';
+			foreach ($this->selectItens as $key => $value) {
+				
+			};
+			$this->content = '</select>';
 			if ($this->sideInput == "left"){$this->content.= $icone;};
 			$this->content .= '</div></div></div>';
 				break;
