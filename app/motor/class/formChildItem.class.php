@@ -25,7 +25,7 @@ class formChildItem{
 			$icone = '<span class="input-group-addon"><i class="'.$this->iconChild.'" aria-hidden="true"></i></span>';
 		} else{
 			$icone = "";
-		}
+		};
 		echo '<div class="form-group"><label class="col-md-4 control-label">'.$this->label.'</label><div class="col-md-8 inputGroupContainer"><div class="input-group"><span class="input-group-addon"><i class="'.$this->iconChild.'"></i></span><input id="'.$this->inputId.'" name="'.$this->inputName.'" placeholder="'.$this->placeHolder.'" class="form-control" required="true" value="'.$this->inputValue.'" type="'.$this->inputType.'" '.$this->inputExtras.'></div></div></div>';
 	}
 	public function html(){
@@ -38,11 +38,11 @@ class formChildItem{
 			case "select":
 			$this->content = '<div class="form-group"><label class="col-md-4 control-label">'.$this->label.'</label><div class="col-md-8 inputGroupContainer"><div class="input-group">';
 			if ($this->sideInput == "right"){$this->content.= $icone;};
-			$this->content .= '<select id="'.$this->inputId.'" name="'.$this->inputName.'" placeholder="'.$this->placeHolder.'" class="form-control" value="'.$this->inputValue.'" '.$this->inputExtras.'>';
+			$this->content .= '<select id="'.$this->inputId.'" name="'.$this->inputName.'" class="form-control" '.$this->inputExtras.'>';
 			foreach ($this->selectItens as $key => $value) {
-				
+				$this->content .= '<option value="'.$key.'">'.$value.'</option>';
 			};
-			$this->content = '</select>';
+			$this->content .= '</select>';
 			if ($this->sideInput == "left"){$this->content.= $icone;};
 			$this->content .= '</div></div></div>';
 				break;
