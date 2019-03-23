@@ -59,6 +59,10 @@ function compactada($template){
 function fontAwesome($pastas){
     return '<link rel="stylesheet" href="'.$pastas.'public/css/font-awesome/font-awesome.min.css">';
 };
+function redux($data){
+    $compatada = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", $data);
+    return $compatada;
+};
 
 
 
