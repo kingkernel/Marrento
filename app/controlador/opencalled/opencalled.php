@@ -4,7 +4,8 @@ class opencalled{
 
 	}
 	public function index(){
-		print_r($_POST);
+		$sql = 'call sp_add_teccalled('.$_POST["prob"].', '.$_POST["userid"].', "'.$_POST["descri"].'")';
+		echo $sql;
 	}
 }
 ?>

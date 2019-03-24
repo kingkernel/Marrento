@@ -78,8 +78,8 @@ delimiter //
 	create procedure sp_add_teccalled(arg_prob int, arg_openfor int, 
 		description text(500))
 		begin
-			insert into teccalled (prob, openfor, description)
-				values (arg_prob, arg_openfor, description);
+			insert into teccalled (prob, openfor, estatus, description)
+				values (arg_prob, arg_openfor, "Aberto", description);
 		end //
 delimiter ;
 
