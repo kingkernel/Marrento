@@ -38,6 +38,13 @@ delimiter //
 			select count(*) as existe from persons where nameperson=arg_user and keyword=arg_passwd and active=1;
 		end//
 delimiter ;
+-- procedure autenticação
+delimiter //
+	create procedure sp_sel_user(arg_user varchar(50), arg_passwd varchar(65))
+		begin
+			select * from persons where nameperson=arg_user and keyword=arg_passwd and active=1;
+		end//
+delimiter ;
 
 
 create table prob_category(
@@ -71,8 +78,8 @@ delimiter //
 	create procedure sp_add_teccalled(arg_prob int, arg_estatus varchar(30),
 		arg_openfor int, arg_opencalled datetime, description text(500))
 		begin
-		insert into teccalled (prob, estatus, openfor, opencalled, description)
-			values (arg_prob, arg_estatus, arg_openfor, arg_opencalled, description);
+			insert into teccalled (prob, estatus, openfor, opencalled, description)
+				values (arg_prob, arg_estatus, arg_openfor, arg_opencalled, description);
 		end //
 delimiter ;
 

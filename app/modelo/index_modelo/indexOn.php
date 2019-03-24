@@ -60,10 +60,15 @@ $body .= '</td><td colspan="1">';
     $open_called3->inputType = "textarea";
     $open_called3->iconChild = "fa fa-edit";
 
+    $open_called4 = new formChildItem;
+    $open_called4->inputName = "userid";
+    $open_called4->inputType = "hidden";
+    $open_called4->inputValue = "1";
+
     $panel_1 = new fieldsetPanel;
     $panel_1->formAction = "ativa/";
     $panel_1->fieldsetLegend = "Abrir Chamados:";
-    $panel_1->formItens = [$open_called1, $open_called2, $open_called3];
+    $panel_1->formItens = [$open_called1, $open_called2, $open_called3, $open_called4];
     $body .= $panel_1->html();
     $body .='</td></tr></tbody></table></div>';
 
