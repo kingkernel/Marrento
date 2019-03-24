@@ -58,11 +58,7 @@ class formChildItem{
 				$this->content .= '</div></div></div>';
 				break;
 			case "hidden":
-				$this->content = '<div class="form-group"><label class="col-md-4 control-label">'.$this->label.'</label><div class="col-md-8 inputGroupContainer"><div class="input-group">';
-				if ($this->sideInput == "right"){$this->content.= $icone;};
-				$this->content.='<input id="'.$this->inputId.'" name="'.$this->inputName.'" placeholder="'.$this->placeHolder.'" class="form-control" required="true" value="'.$this->inputValue.'" type="'.$this->inputType.'" '.$this->inputExtras.'>';
-				if ($this->sideInput == "left"){$this->content.= $icone;};
-				$this->content.='</div></div></div>';
+				$this->content.='<input id="'.$this->inputId.'" name="'.$this->inputName.'" value="'.$this->inputValue.'" type="hidden" '.$this->inputExtras.'>';
 				break;
 			default:
 				$this->content = '<div class="form-group"><label class="col-md-4 control-label">'.$this->label.'</label><div class="col-md-8 inputGroupContainer"><div class="input-group">';

@@ -67,5 +67,14 @@ primary key(id),
 foreign key(prob) references prob_category(id),
 foreign key(openfor) references persons(id))engine=innodb charset=utf8;
 
+delimiter //
+	create procedure sp_add_teccalled(arg_prob int, arg_estatus varchar(30),
+		arg_openfor int, arg_opencalled datetime, description text(500))
+		begin
+		insert into teccalled (prob, estatus, openfor, opencalled, description)
+			values (arg_prob, arg_estatus, arg_openfor, arg_opencalled, description);
+		end //
+delimiter ;
+
 
 
