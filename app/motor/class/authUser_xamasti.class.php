@@ -8,7 +8,7 @@ class authUser_xamasti{
 	public function login($user, $keyhash){
 		$sql = queryDb('call sp_sel_user("'.$user.'", "'.$keyhash.'")');
 		$dados = $sql->fetch(PDO::FETCH_ASSOC);
-		$_SESSION["UserId"] = $dados["id"];
+		$_SESSION["userId"] = $dados["id"];
 	}
 }
 ?>

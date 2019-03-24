@@ -27,15 +27,14 @@ $body = '<div class="container"><table class="table"><tbody><tr><td colspan="1">
     $panel_0->formItens = [$campo1, $campo2, $campo3, $campo4, $campo5, $campo6, $campo7, $campo8, $campo9];
     $body .= $panel_0->html();
 $body .= '</td><td colspan="1">';
+
     $open_called1 = new formChildItem;
     $open_called1->label = "Usuário:";
     $open_called1->inputName = "usuario";
     $open_called1->inputValue = $_SESSION["usuario"];
     $open_called1->inputExtras = "disabled";
     $open_called1->sideInput = "right";
-    //$open_called1->selectItens = [0=>"nome 1", 1=>"nome 2", 2=>"nome 3"];
-    //$open_called1->inputType = "select";
-    //$open_called1->iconChild = null;
+
     //unset($open_called1->iconChild);
 
     $open_called2 = new formChildItem;
@@ -65,10 +64,14 @@ $body .= '</td><td colspan="1">';
     $open_called4->inputType = "hidden";
     $open_called4->inputValue = $_SESSION["userId"];
 
+    $submit = new buttons;
+    $submit->type="submit";
+    $submit->value="Abrir Chamado";
+
     $panel_1 = new fieldsetPanel;
-    $panel_1->formAction = "ativa/";
+    $panel_1->formAction = "/opencalled/";
     $panel_1->fieldsetLegend = "Abrir Chamados:";
-    $panel_1->formItens = [$open_called1, $open_called2, $open_called3, $open_called4];
+    $panel_1->formItens = [$open_called1, $open_called2, $open_called3, $open_called4, $submit];
     $body .= $panel_1->html();
     $body .='</td></tr></tbody></table></div>';
 
