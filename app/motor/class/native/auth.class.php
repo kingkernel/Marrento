@@ -17,13 +17,11 @@ class auth {
 		$this->password = sha1(md5(sha1($_POST["snhpwd"])));
 		//cria a query
 		$sql = "call sp_login(\"$this->user\", \"$this->password\")";
-		$dados = retornadbinfo($sql);
+		$dados = queryDb($sql);
 		$linha = $dados->fetch(PDO::FETCH_ASSOC);
 		if ($linha["existe"] == 1){
 			$_SESSION["LOGADO"]=TRUE;
 			$_SESSION["usuario"] = $_POST["user"];
-			$logedUser = new authUser_xamasti($this->user, $this->password);
-			print_r($logedUser);
 			//$logedUser = new authuser_campanha;
 			//	$logedUser->usuario = $_SESSION["usuario"];
 			//	$logedUser->loguser();

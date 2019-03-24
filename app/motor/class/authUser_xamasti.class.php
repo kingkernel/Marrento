@@ -3,14 +3,12 @@
 
 */
 class authUser_xamasti{
-
-	public function __construct($user, $keyhash){
-		$sql = queryDb('call sp_add_teccalled("'.$user.'", "'.$keyhash.'")');
-		echo $sql;
-		return $sql;
+	public function __construct(){
 	}
-	public function login(){
-		echo $sql;
+	public function login($user, $keyhash){
+		$sql = queryDb('call sp_sel_user("'.$user.'", "'.$keyhash.'")');
+		$dados = $sql->fetch(PDO::FETCH_ASSOC);
+		$_SESSION["UserId"] = $dados["id"];
 	}
 }
 ?>

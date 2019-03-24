@@ -63,7 +63,7 @@ $body .= '</td><td colspan="1">';
     $open_called4 = new formChildItem;
     $open_called4->inputName = "userid";
     $open_called4->inputType = "hidden";
-    $open_called4->inputValue = "1";
+    $open_called4->inputValue = $_SESSION["userId"];
 
     $panel_1 = new fieldsetPanel;
     $panel_1->formAction = "ativa/";
@@ -74,6 +74,4 @@ $body .= '</td><td colspan="1">';
 
 $page->bodycontent = $topmenu->html().$body;
 $page->render();
-$logedUser = new authUser_xamasti("root", sha1(md5(sha1("123"))));
-print_r($logedUser);
 ?>

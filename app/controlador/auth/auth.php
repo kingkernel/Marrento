@@ -18,16 +18,14 @@ class auth {
 		//cria a query
 		$sql = "call sp_login(\"$this->user\", \"$this->password\")";
 		$dados = queryDb($sql);
-		print_r($dados);
 		$linha = $dados->fetch(PDO::FETCH_ASSOC);
 		if ($linha["existe"] == 1){
 			$_SESSION["LOGADO"]=TRUE;
 			$_SESSION["usuario"] = $_POST["user"];
-			//$logedUser = new authuser_campanha;
-			//	$logedUser->usuario = $_SESSION["usuario"];
-			//	$logedUser->loguser();
+			$logedUser = new authUser_xamasti();
+			$logedUser->login($this->user, $this->password);
 			header("Location: /");
-			echo "<script>document.reload();</script>";
+			 echo "<script>document.reload();</script>";
 		} else {
 			echo "login desativado ou inexistente : ";
 		};
