@@ -9,25 +9,33 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
 		$use_info->exitlink = "/auth/logout/";
 		$use_info->updataidlink = "/user/update/";
 
-    $campo1 = new formChildItem;
-    $campo2 = new formChildItem;
-    $campo3 = new formChildItem;
-    $campo4 = new formChildItem;
-    $campo5 = new formChildItem;
-    $campo6 = new formChildItem;
-    $campo7 = new formChildItem;
-    $campo8 = new formChildItem;
-    $campo9 = new formChildItem;
-
   $topmenu->itensright=[$use_info];
-$body = '<div class="container"><table class="table"><tbody><tr><td colspan="1">';
-    $panel_0 = new fieldsetPanel;
-    $panel_0->formAction = "ativa/";
-    $panel_0->fieldsetLegend = "Fila de chamados";
-    $panel_0->formItens = [$campo1, $campo2, $campo3, $campo4, $campo5, $campo6, $campo7, $campo8, $campo9];
-    $body .= $panel_0->html();
-$body .= '</td><td colspan="1">';
+  $body = '<div class="container"><table class="table"><tbody><tr><td colspan="1">';
+    $panel_0 = new rowAlert;
+    $panel_0->colSize = "md-12";
+    $panel_0->class = "alert alert-warning";
+    $panel_0->titleSize = "3";
+    $panel_0->alertTitle = 'Chamados Abertos <span class="glyphicon glyphicon-tasks"></span>';
+    
+    $table = new table;
+    $headers = ["Usuário", "Problema", "Estatus"];
+    $table->headers($headers);
+    $sql = queryDb("call sp_sel_teccalled()");
+    $arrayRow = [];
+    while ($query = $sql->fetch(PDO::FETCH_ASSOC)) {
+      if($query["estatus"] == "Aberto"){$class = "warning";} else {$class = "success";};
+        array_push($arrayRow, '<tr><td>'.$query["nameperson"].'</td><td>'.$query["prob"].'</td><td><span class="label label-'.$class.'">'.$query["estatus"].'</span></td></tr>');
+      };
+    $table->rows($arrayRow);
 
+    $panel_0->alertText = $table->html();
+    $sql = 'call sp_sel_teccalled()';
+    $query = queryDb($sql);
+    $dados =$query->fetch(PDO::FETCH_ASSOC);
+
+    $body .= $panel_0->html();
+    $body .= '</td><td colspan="1">';
+  
     $open_called1 = new formChildItem;
     $open_called1->label = "Usuário:";
     $open_called1->inputName = "usuario";
@@ -57,6 +65,7 @@ $body .= '</td><td colspan="1">';
     $open_called3->inputName = "descri";
     $open_called3->sideInput = "right";
     $open_called3->inputType = "textarea";
+    $open_called3->inputExtras = 'required="true"';
     $open_called3->iconChild = "fa fa-edit";
 
     $open_called4 = new formChildItem;

@@ -66,7 +66,7 @@ delimiter ;
 create table teccalled (
 id int auto_increment,
 prob int,
-estatus enum("Aberto", "Aguardando Atendimento", "Encerrado") default "Aberto",
+estatus enum("Aberto", "Em Atendimento", "Encerrado"),
 openfor int,
 opencalled datetime default now(),
 description text(500),
@@ -82,6 +82,22 @@ delimiter //
 				values (arg_prob, arg_openfor, "Aberto", description);
 		end //
 delimiter ;
-
+-- 
+delimiter //
+	create procedure sp_sel_teccalled()
+		begin
+			SELECT teccalled.id,
+       persons.nameperson,
+       prob_category.prob,
+       teccalled.estatus,
+       teccalled.opencalled,
+       teccalled.description
+  FROM (xamasti.teccalled teccalled
+        INNER JOIN xamasti.prob_category prob_category
+           ON (teccalled.prob = prob_category.id))
+       INNER JOIN xamasti.persons persons ON (teccalled.openfor = persons.id)
+ WHERE (teccalled.estatus != 'Encerrado');
+		end //
+delimiter ;
 
 

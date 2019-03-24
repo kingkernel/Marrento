@@ -1,7 +1,7 @@
 <?php 
 /**
 Criação 15/11/2017
-Última Alteração: 21/03/2019
+Última Alteração: 24/03/2019
 Autor: Daniel J. Santos
 E-mail: daniel.santos.ap@gmail.com
 **/
@@ -64,7 +64,19 @@ function redux($data){
     $compatada = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", $data);
     return $compatada;
 };
-
+function fastquery($sql){
+/**
+    Nome:               fastquery
+    Função:             executa uma inserção no banco de dados. basicamente para auditorias.
+    @param sql->        string (sql) de inserção
+    Data de criação:    24/03/2019
+    Última alteração:   24/03/2019
+**/
+    $pdo = new pdo($_SESSION["load"]["banco_de_dados"]["driver"] . ":dbname=". $_SESSION["load"]["banco_de_dados"]["banco"] . ";charset=UTF8;host=" . $_SESSION["load"]["banco_de_dados"]["host"] . ";" , $_SESSION["load"]["banco_de_dados"]["usuario"], $_SESSION["load"]["banco_de_dados"]["senha"]);
+    //$pdo->prepare($sql);
+    $pdo->exec($sql);
+    
+};
 
 
 ###################################################################################################
@@ -172,19 +184,6 @@ function getjs_($template){
 AREA DE CONSULTAS E INSERÇÕES NO BANCO DE DADOS
 ##########################################################################################################
 **/
-function fastquery_($sql){
-/**
-    Nome:           fastquery
-    Função:         executa uma inserção no banco de dados. basicamente para auditorias.
-    @param sql->    string (sql) de inserção
-    Data de criação:
-    Última alteração:
-**/
-    $pdo = new pdo($_SESSION["load"]["banco_de_dados"]["driver"] . ":dbname=". $_SESSION["load"]["banco_de_dados"]["banco"] . ";charset=UTF8;host=" . $_SESSION["load"]["banco_de_dados"]["host"] . ";" , $_SESSION["load"]["banco_de_dados"]["usuario"], $_SESSION["load"]["banco_de_dados"]["senha"]);
-    //$pdo->prepare($sql);
-    $pdo->exec($sql);
-    
-};
 function fastquery_messages_($sql, $mensagem1, $mensagem2){
 /**
     Nome:           fastquery_messages
@@ -267,7 +266,7 @@ class inline_{
         
     }
     public function html(){
-        $this->somacontent = '<div class="form-inline" style="margin-left:10px; margin-right: 10px"><label for="nasc">Nascimento : </label><select class="form-control" style="margin-bottom:10px;" name="anouser"><option> ANO </option>';$x=2018; while ($x >= 1900) {$this->somacontent .= '<option value="'.$x.'"">'.$x.'</option>';$x--;};$this->somacontent .= '</select> <select class="form-control" style="margin-bottom:10px;" name="mesuser"><option> MÊS </option>';$meses = array("01"=>"Janeiro", "02"=>"Fevereiro", "03"=>"Março", "04"=>"Abril", "05"=>"Maio", "06"=>"Junho", "07"=>"Julho", "08"=>"Agosto", "09"=>"Setembro", "10"=>"Outubro", "11"=>"Novembro", "12"=>"Dezembro");foreach ($meses as $key => $value) {$this->somacontent .= '<option value="'.$key.'">'.$value.'</option>';};$this->somacontent .= '</select> <select class="form-control" style="margin-bottom:10px;" name="diauser"><option> DIA </option>';$x=1;while ($x <= 31) {$this->somacontent .= '<option value="'.$x.'">'.$x.'</option>';$x++;};$this->somacontent .= '</select></div>';
+        $this->somacontent = '<div class="form-inline" style="margin-left:10px; margin-right: 10px"><label for="nasc">Nascimento : </label><select class="form-control" style="margin-bottom:10px;" name="anouser"><option> ANO </option>';$x=2019; while ($x >= 1900) {$this->somacontent .= '<option value="'.$x.'"">'.$x.'</option>';$x--;};$this->somacontent .= '</select> <select class="form-control" style="margin-bottom:10px;" name="mesuser"><option> MÊS </option>';$meses = array("01"=>"Janeiro", "02"=>"Fevereiro", "03"=>"Março", "04"=>"Abril", "05"=>"Maio", "06"=>"Junho", "07"=>"Julho", "08"=>"Agosto", "09"=>"Setembro", "10"=>"Outubro", "11"=>"Novembro", "12"=>"Dezembro");foreach ($meses as $key => $value) {$this->somacontent .= '<option value="'.$key.'">'.$value.'</option>';};$this->somacontent .= '</select> <select class="form-control" style="margin-bottom:10px;" name="diauser"><option> DIA </option>';$x=1;while ($x <= 31) {$this->somacontent .= '<option value="'.$x.'">'.$x.'</option>';$x++;};$this->somacontent .= '</select></div>';
         return $this->somacontent;
     }
     public function render(){
