@@ -31,22 +31,45 @@ $body .= '</td><td colspan="1">';
     $open_called1->label = "Usuário:";
     $open_called1->inputName = "usuario";
     $open_called1->inputValue = $_SESSION["usuario"];
-    //$open_called1->inputExtras = "disabled";
+    $open_called1->inputExtras = "disabled";
     $open_called1->sideInput = "right";
-    $open_called1->selectItens = [0=>"mamon", 1=>"beirut", 2=>"marmaduk"];
-    $open_called1->inputType = "select";
+    //$open_called1->selectItens = [0=>"nome 1", 1=>"nome 2", 2=>"nome 3"];
+    //$open_called1->inputType = "select";
+    //$open_called1->iconChild = null;
+    //unset($open_called1->iconChild);
 
+    $open_called2 = new formChildItem;
+    $open_called2->label = "Problema:";
+    $open_called2->inputName = "prob";
+    $open_called2->sideInput = "right";
+    $open_called2->inputType = "select";
+    $open_called2->iconChild = "fa fa-bug";
+
+    $sql = queryDb("call sp_sel_prob_category()");
+    $option = [];
+    while ($dados = $sql->fetch(PDO::FETCH_ASSOC)){
+        $data = '<option value="'.$dados["id"].'">'.$dados["prob"].'</option>';
+        array_push($option, $data);
+    };
+    $open_called2->selectItens = $option;
+
+    $open_called3 = new formChildItem;
+    $open_called3->label = "Descrição:";
+    $open_called3->inputName = "descri";
+    $open_called3->sideInput = "right";
+    $open_called3->inputType = "textarea";
+    $open_called3->iconChild = "fa fa-edit";
 
     $panel_1 = new fieldsetPanel;
     $panel_1->formAction = "ativa/";
     $panel_1->fieldsetLegend = "Abrir Chamados:";
-    $panel_1->formItens = [$open_called1];
+    $panel_1->formItens = [$open_called1, $open_called2, $open_called3];
     $body .= $panel_1->html();
     $body .='</td></tr></tbody></table></div>';
 
 $page->bodycontent = $topmenu->html().$body;
 $page->render();
 $input = new inputAddOn;
-$input->sideInput ="right"; 
-$input->render();
+//$input->sideInput ="right"; 
+//$input->render();
 ?>

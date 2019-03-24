@@ -41,20 +41,30 @@ delimiter ;
 
 
 create table prob_category(
-prob varchar(50) primary key)engine=innodb charset=utf8;
+id int auto_increment,
+prob varchar(50),
+primary key(id))engine=innodb charset=utf8;
 
-insert into prob_category values ("Impressora não imprime"), ("Atualizar o SGV"),
+insert into prob_category (prob) values ("Outros"),("Impressora não imprime"), ("Atualizar o SGV"),
 ("Sem internet"), ("Computador Travando"), ("Computador lento"),
-("Troca de Equipamento"), ("Headset mudo"), ("outros"), ("Mudar usuário de lugar");
+("Troca de Equipamento"), ("Headset mudo"), ("Mudar usuário de lugar");
+
+delimiter //
+	create procedure sp_sel_prob_category()
+		begin
+			select * from prob_category;
+		end //
+delimiter ;
 
 create table teccalled (
 id int auto_increment,
-prob varchar(50),
-estatus enum("Aberto", "Aguardando Atendimento", "Encerrado"),
+prob int,
+estatus enum("Aberto", "Aguardando Atendimento", "Encerrado") default "Aberto",
 openfor int,
 opencalled datetime default now(),
+description text(500),
 primary key(id),
-foreign key(prob) references prob_category(prob),
+foreign key(prob) references prob_category(id),
 foreign key(openfor) references persons(id))engine=innodb charset=utf8;
 
 
