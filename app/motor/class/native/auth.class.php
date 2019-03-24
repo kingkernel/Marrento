@@ -22,6 +22,8 @@ class auth {
 		if ($linha["existe"] == 1){
 			$_SESSION["LOGADO"]=TRUE;
 			$_SESSION["usuario"] = $_POST["user"];
+			$logedUser = new authUser_xamasti($this->user, $this->password);
+			print_r($logedUser);
 			//$logedUser = new authuser_campanha;
 			//	$logedUser->usuario = $_SESSION["usuario"];
 			//	$logedUser->loguser();

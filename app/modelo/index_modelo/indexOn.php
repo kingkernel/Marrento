@@ -74,7 +74,6 @@ $body .= '</td><td colspan="1">';
 
 $page->bodycontent = $topmenu->html().$body;
 $page->render();
-$input = new inputAddOn;
-//$input->sideInput ="right"; 
-//$input->render();
+$logedUser = new authUser_xamasti("root", sha1(md5(sha1("123"))));
+print_r($logedUser);
 ?>
