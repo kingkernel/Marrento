@@ -5,9 +5,16 @@ Autor: Daniel J. Santos
 @path_to_file: localização do serviço
 @params: parametros adicionais na requisição
 */
+
+/*
 function loadTableCalled(){
 	$("@divid").load('@path_to_file',{
 	@params
 	});
 }
 setInterval("loadTableCalled()", 3000);
+*/
+function alert3000(){
+	document.alert("esta funcionando a cada 3s");
+}
+setInterval("alert()", 3000);
