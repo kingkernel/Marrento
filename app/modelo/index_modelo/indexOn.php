@@ -16,7 +16,7 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
 		$use_info->updataidlink = "/user/update/";
 
     $topmenu->itensright=[$use_info];
-    $body = '<div class="container"><table class="table"><tbody><tr><td colspan="1">';
+    $body = '<div class="container"><table class="table"><tbody><tr><td colspan="1" id="ajxdiv001">';
     $panel_0 = new rowAlert;
     $panel_0->colSize = "md-12";
     $panel_0->class = "alert alert-warning";
