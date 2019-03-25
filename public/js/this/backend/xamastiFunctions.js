@@ -1,10 +1,13 @@
 /*
 Data de criação: 25/03/2019
 Autor: Daniel J. Santos
+@divid
+@path_to_file
+@params
 */
 function loadTableCalled(){
-	$("#ajxdiv001").load('@path_to_file',{
-	param1: "value1", param2: "value2"} ,
+	$("@divid").load('@path_to_file',{
+	@params} ,
 		function(){
 		/* Stuff to do after the page is loaded */
 	});
