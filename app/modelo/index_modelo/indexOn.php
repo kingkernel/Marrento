@@ -1,6 +1,12 @@
 <?php
+/*
+Data criação: 25/03/2019
+Autor: Daniel J. Santos
+Última Alteração: 25/03/2019
+*/
 $page = new page;
 $page->headersinclude .= fontAwesome(urlcss($_GET));
+
 	$topmenu =  new topnav;
 	$topmenu->brand = $_SESSION["load"]["company"]["name"]. ' <span class="fa fa-headphones"></span>';
 
@@ -9,8 +15,8 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
 		$use_info->exitlink = "/auth/logout/";
 		$use_info->updataidlink = "/user/update/";
 
-  $topmenu->itensright=[$use_info];
-  $body = '<div class="container"><table class="table"><tbody><tr><td colspan="1">';
+    $topmenu->itensright=[$use_info];
+    $body = '<div class="container"><table class="table"><tbody><tr><td colspan="1">';
     $panel_0 = new rowAlert;
     $panel_0->colSize = "md-12";
     $panel_0->class = "alert alert-warning";
