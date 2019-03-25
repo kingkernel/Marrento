@@ -4,12 +4,12 @@ class ajax {
 
 	}
 	public function loadTableCalled(){
-	$panel_0 = new rowAlert;
+  	
+  	$panel_0 = new rowAlert;
     $panel_0->colSize = "md-12";
     $panel_0->class = "alert alert-warning";
     $panel_0->titleSize = "3";
     $panel_0->alertTitle = 'Chamados Abertos <span class="glyphicon glyphicon-tasks"></span>';
-    
     $table = new table;
     $headers = ["Usuário", "Problema", "Estatus"];
     $table->headers($headers);
@@ -20,7 +20,9 @@ class ajax {
         array_push($arrayRow, '<tr><td>'.$query["nameperson"].'</td><td>'.$query["prob"].'</td><td><span class="label label-'.$class.'">'.$query["estatus"].'</span></td></tr>');
       };
     $table->rows($arrayRow);
-    $table->html();
+    
+    $panel_0->alertText = $table->html();
+    echo $panel_0->html();
 	}
 }
 ?>
