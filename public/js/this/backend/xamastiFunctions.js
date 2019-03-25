@@ -10,4 +10,4 @@ function loadTableCalled(){
 	@params
 	});
 }
-setInterval("loadTableCalled()", 1000);
+setInterval("loadTableCalled()", 3000);
