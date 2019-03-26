@@ -15,8 +15,36 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
 		$use_info->exitlink = "/auth/logout/";
 		$use_info->updataidlink = "/user/update/";
 
-    $topmenu->itensright=[$use_info];
+        $use_info1 = new li_user_info;
+        $use_info1->nomedisplay = "daniels";
+        $use_info1->exitlink = "/auth/logout/";
+        $use_info1->updataidlink = "/user/update/";
+
+    $topmenu->itensright=[$use_info, $use_info1];
+
+        $menu1 = new li_dropdown;
+        $menu1->text = "Ações";
+            $sub1 = new li_item;
+            $sub1->text = "Relatórios";
+            $sub2 = new li_item;
+            $sub2->text = "Usuários";
+            $sub3 = new li_item;
+            $sub3->text = "Chamados";
+        $menu1->subitem = [$sub1, $sub2, $sub3];
+
+        $menu2 = new li_dropdown;
+        $menu2->text = "Relatórios";
+            $sub1 = new li_item;
+            $sub1->text = "Relatórios";
+            $sub2 = new li_item;
+            $sub2->text = "Usuários";
+            $sub3 = new li_item;
+            $sub3->text = "Chamados";
+        $menu2->subitem = [$sub1, $sub2, $sub3];
+
+    $topmenu->itensleft= [$menu1, $menu2];
     $body = '<div class="container"><table class="table"><tbody><tr><td colspan="1" id="ajxdiv001">';
+    
     $panel_0 = new rowAlert;
     $panel_0->colSize = "md-12";
     $panel_0->class = "alert alert-warning";
@@ -93,4 +121,5 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
 $page->bodycontent = $topmenu->html().$body;
 $page->scriptsendpage = getjs_("./public/js/this/backend/xamastiFunctions.js");
 $page->render();
+
 ?>
