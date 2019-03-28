@@ -25,21 +25,18 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
         $menu1 = new li_dropdown;
         $menu1->text = "Ações";
             $sub1 = new li_item;
-            $sub1->text = "Relatórios";
+            $sub1->text = "Atualizar chamado";
             $sub2 = new li_item;
-            $sub2->text = "Usuários";
-            $sub3 = new li_item;
-            $sub3->text = "Chamados";
-        $menu1->subitem = [$sub1, $sub2, $sub3];
+        $menu1->subitem = [$sub1];
 
         $menu2 = new li_dropdown;
         $menu2->text = "Relatórios";
             $sub1 = new li_item;
-            $sub1->text = "Relatórios";
+            $sub1->text = "Relatório chamados";
             $sub2 = new li_item;
-            $sub2->text = "Usuários";
+            $sub2->text = "Relatório Usuários";
             $sub3 = new li_item;
-            $sub3->text = "Chamados";
+            $sub3->text = "Relatório Problemas";
         $menu2->subitem = [$sub1, $sub2, $sub3];
 
     $topmenu->itensleft= [$menu1, $menu2];
@@ -119,9 +116,3 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
 $page->bodycontent = $topmenu->html().$body;
 $page->scriptsendpage = getjs_("./public/js/this/backend/xamastiFunctions.js");
 $page->render();
-<<<<<<< HEAD
-
-?>
-=======
-?>
->>>>>>> d9491729fc08460e91c86c6580f52a6dedbbb0c3
