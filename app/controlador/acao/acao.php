@@ -12,9 +12,6 @@ class acao {
 
 	}
 	public function chamados(){
-		if ($_GET["urldigitada"]==get_class()."/"){
-			echo "redundante";
-		};
 	$panel_0 = new rowAlert;
     $panel_0->colSize = "md-12";
     $panel_0->class = "alert alert-warning";
@@ -28,7 +25,7 @@ class acao {
     $arrayRow = [];
     while ($query = $sql->fetch(PDO::FETCH_ASSOC)) {
       if($query["estatus"] == "Aberto"){$class = "warning";} else {$class = "success";};
-        array_push($arrayRow, '<tr><td>'.$query["nameperson"].'</td><td>'.$query["prob"].'</td><td><span class="label label-'.$class.'">'.$query["estatus"].'</span></td><td><form action="../updatecalled/" method="post"><select required="true"><option value="">escolha</option><option value="Em Atendimento">Em atendimento</option><option value="Encerrado">Encerrado</option></select> <input type="submit" class="btn btn-success" value="Atualizar"></form></td></tr>');
+        array_push($arrayRow, '<tr><td>'.$query["nameperson"].'</td><td>'.$query["prob"].'</td><td><span class="label label-'.$class.'">'.$query["estatus"].'</span></td><td><form action="updatecalled/" method="post"><select required="true"><option value="">escolha</option><option value="Em Atendimento">Em atendimento</option><option value="Encerrado">Encerrado</option></select> <input type="submit" class="btn btn-success" value="Atualizar"></form></td></tr>');
       };
     $table->rows($arrayRow);
 
