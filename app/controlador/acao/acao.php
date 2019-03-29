@@ -25,7 +25,7 @@ class acao {
     $arrayRow = [];
     while ($query = $sql->fetch(PDO::FETCH_ASSOC)) {
       if($query["estatus"] == "Aberto"){$class = "warning";} else {$class = "success";};
-        array_push($arrayRow, '<tr><td>'.$query["nameperson"].'</td><td>'.$query["prob"].'</td><td><span class="label label-'.$class.'">'.$query["estatus"].'</span></td><td><form action="updatecalled/" method="post"><select required="true"><option value="">escolha</option><option value="Em Atendimento">Em atendimento</option><option value="Encerrado">Encerrado</option></select> <input type="submit" class="btn btn-success" value="Atualizar"></form></td></tr>');
+        array_push($arrayRow, '<tr><td>'.$query["nameperson"].'</td><td>'.$query["prob"].'</td><td><span class="label label-'.$class.'">'.$query["estatus"].'</span></td><td><form action="http://'.SITENAME.'/acao/updatecalled/" method="post"><select required="true"><option value="">escolha</option><option value="Em Atendimento">Em atendimento</option><option value="Encerrado">Encerrado</option></select> <input type="submit" class="btn btn-success" value="Atualizar"></form></td></tr>');
       };
     $table->rows($arrayRow);
 
@@ -36,6 +36,11 @@ class acao {
 
 		$this->page->bodycontent = $panel_0->html();
 		$this->page->render();
+	}
+	public function updatecalled(){
+		print_r($_SESSION);
+		print_r($_POST);
+		echo phpinfo();
 	}
 }
 ?>
