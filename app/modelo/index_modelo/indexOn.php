@@ -119,9 +119,5 @@ $page->headersinclude .= fontAwesome(urlcss($_GET));
 $page->bodycontent = $topmenu->html().$body;
 $page->scriptsendpage = getjs_("./public/js/this/backend/xamastiFunctions.js");
 $page->render();
-<<<<<<< HEAD
 
 ?>
-=======
-?>
->>>>>>> d9491729fc08460e91c86c6580f52a6dedbbb0c3
