@@ -100,4 +100,9 @@ delimiter //
 		end //
 delimiter ;
 
-
+delimiter //
+	create procedure sp_up_teccalled(arg_estatus varchar(35), arg_id int)
+		begin
+			update teccalled set estatus=arg_estatus where id=arg_id;
+		end //
+delimiter ;

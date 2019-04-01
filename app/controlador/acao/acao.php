@@ -38,8 +38,12 @@ class acao {
 		$this->page->render();
 	}
 	public function updatecalled(){
-		print_r($_POST);
-
+		//print_r($_POST);
+        //[calledaction] => Encerrado [id] => 1
+        $acaochamado = $_POST["calledaction"];
+        $idchamado = $_POST["id"];
+        $sql = 'call sp_up_teccalled("'.$acaochamado.'", "'.$idchamado.'")';
+        echo $sql;
 	}
 }
 ?>
