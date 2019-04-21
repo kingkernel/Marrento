@@ -40,9 +40,9 @@ spl_autoload_register(function ($class_name) {
 // Arquivo com as funções principais e básicas do sistema
 require(PATHMOTOR."engine.php");
 //	se existir o conteudo digitado, aceite, se não, o conteudo se torna "index/index"
-if (isset($_GET["urldigitada"]) ? $_GET["urldigitada"] . "/" : $_GET["urldigitada"] = "index/index");
+if (isset($_GET["url"]) ? $_GET["url"] . "/" : $_GET["url"] = "index/index");
 //	separe o que foi digitado, por barras e transforme a variavel em array, convertendo em minúsculo
-$parametros = explode("/", strtolower($_GET["urldigitada"]));
+$parametros = explode("/", strtolower($_GET["url"]));
 //	se o parametro existir aceite o parametro, se não, torna-se "index";
 if(isset($parametros[0]) ? $parametros[0] : $parametros[0] = "index");
 //	criamos uma variavel com o caminho do controlador
