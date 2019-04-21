@@ -10,6 +10,7 @@
 framework = bootstrap
 MODE_INTERFACE=online
 version = 4.0.0-alpha.4
+css= offlines
 
 [banco_de_dados]
 driver=mysql
