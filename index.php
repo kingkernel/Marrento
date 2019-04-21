@@ -22,10 +22,10 @@ define ("PUBLICDIR", "/public/");
 define ("FONTES", __DIR__. "/public/fonts/net/");
 define ("CLASSES", __DIR__. "/app/motor/class/");
 //	faz a leitura automática de classes. todas classes do sitema devem estar nessas pastas
-//class
-//class/native
-//class/native/front-end
-//class/native/back-end
+//class 						-> Classes ainda em desenvolvimento e não dados como prontas para utilização no framework
+//class/native 					-> Classes nativas e são o core principal do framework.
+//class/native/front-end 		-> Classes referentes a interface de usuario devem ser colocadas nesta pasta
+//class/native/back-end 		-> Classes referentes a Back-end devem ser colocadas nessa pasta
 spl_autoload_register(function ($class_name) {
 	if (file_exists(PATHMOTOR . "class/" . $class_name . '.class.php')){
 		include PATHMOTOR . "class/" . $class_name . '.class.php';
