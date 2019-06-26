@@ -2,10 +2,10 @@
 /**
 ###################################################################################################
 	ARQUIVO: index.php
-  	Funções relacionados ao controlador geral do MVC
+  	Funções relacionados ao controlador geral do MVC. Arquivo inicial
   	Criador: Daniel José dos Santos
  	Criação: 15/11/2017
- 	Últimas alterações: 21/03/2019
+ 	Últimas alterações: 25/06/2019
 ###################################################################################################
 **/
 //	inicializa a sessão para todo o site
@@ -21,8 +21,8 @@ define ("PATHMOTOR", __DIR__ . "/app/motor/");
 define ("PUBLICDIR", "/public/");
 define ("FONTES", __DIR__. "/public/fonts/net/");
 define ("CLASSES", __DIR__. "/app/motor/class/");
-//	faz a leitura automática de classes. todas classes do sitema devem estar nessas pastas
-//class 						-> Classes ainda em desenvolvimento e não dados como prontas para utilização no framework
+//	Faz a leitura automática de classes. todas classes do sitema devem estar nessas pastas
+//class 						-> Classes ainda em desenvolvimento e não  prontas para utilização no framework
 //class/native 					-> Classes nativas e são o core principal do framework.
 //class/native/front-end 		-> Classes referentes a interface de usuario devem ser colocadas nesta pasta
 //class/native/back-end 		-> Classes referentes a Back-end devem ser colocadas nessa pasta
