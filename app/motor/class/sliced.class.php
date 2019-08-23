@@ -75,7 +75,7 @@ class sliced
 					}
 			}
 			preg_match_all('/@field\{\{(\w{2,30})\}\}/', $first, $z);
-		print(fastload($first));
+		return fastload($first);
 	}
 }
 ?>
