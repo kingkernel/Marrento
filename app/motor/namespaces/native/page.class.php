@@ -32,13 +32,6 @@ class page{
 		$this->bodycontent = $content;
 		$this->render();
 	}
-	public function loadview($template)
-	{
-		$pagina = new sliced;
-		$pagina->shred($template);
-
-
-	}
 
 }
 ?>

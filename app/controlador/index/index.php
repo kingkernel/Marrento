@@ -5,7 +5,10 @@ class index {
 		$this->page = new page;
 		return $this;
 	}
-	public function index(){
+	public function index()
+	{
+		$this->page->loadview("templates.default.frontpage");
+		/*
         if (!isset($_SESSION["LOGADO"])){
             $login = new simpleLoginBox;
             $this->page->bodycontent = $login->html();
@@ -13,6 +16,7 @@ class index {
         } else{
             include PATHMODELO . get_class(). "_modelo/".get_class()."On.php";
         };
+        */
 	}
 }
 ?>
