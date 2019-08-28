@@ -35,17 +35,16 @@ class page{
 	public function loadview($template, $variables = [])
 	{
 		$pagina = new sliced;
-		print_r($pagina->shred($template));
-		echo $this->subsfields($pagina->shred($template), "");
+		//print_r($pagina->shred($template));
+		echo $this->subsfields($pagina->shred($template), $variables);
 
 	}
 	public function subsfields($template, $fields)
 	{
 		preg_match_all('/@field\{\{(\w{2,30})\}\}/', $template, $matches);
-		print_r($matches);
-		foreach ($matches as $search => $fields) {
-			$template = str_replace($search, $fields, $template);
-		}
+		foreach ($fields as $key => $value) {
+			$template = str_replace('@field{{'.$key.'}}', $value, $template);
+		};
 		return $template;
 	}
 }
