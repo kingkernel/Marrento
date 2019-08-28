@@ -3,8 +3,6 @@
     "description": "Framwork  Iceberg",
     "type": "project",
     "authors": [
-	"minimum-stability": "dev",
-	"prefer-stable": true,
         {
             "name": "Daniels",
             "email": "daniel.santos.ap@gmail.com"
@@ -13,4 +11,6 @@
     "require": {
         "php": ">=5.3.0"
     }
+    "minimum-stability": "dev",
+	"prefer-stable": true
  }
