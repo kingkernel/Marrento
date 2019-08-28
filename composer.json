@@ -3,6 +3,8 @@
     "description": "Framwork  Iceberg",
     "type": "project",
     "authors": [
+	"minimum-stability": "dev",
+	"prefer-stable": true,
         {
             "name": "Daniels",
             "email": "daniel.santos.ap@gmail.com"
