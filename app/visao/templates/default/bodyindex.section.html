@@ -6,7 +6,8 @@
 	}
 	.personalfont{
 		font-size: 35px;
-		-webkit-text-stroke-width: 1px
+		-webkit-text-stroke-width: 1px;
+		color: white;
 	}
 	@font-face{
 		font-family: mystylefont2;
@@ -25,6 +26,19 @@
 		-webkit-text-stroke-width: 1px;
 		letter-spacing: 3px;
 	}
+	.bg{
+		background-image: url("public/images/fundogif.gif");
+		background-position: center;
+		background-repeat: no-repeat;
+		/* background-size: 100%;*/
+		backface-visibility: 0.5;
+	}
+	.bgpage{
+		background-image: url("public/images/fundoice5.jpg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
 </style>
 <div class="container">
 	<div class="row justify-content-center align-self-center">
@@ -38,11 +52,11 @@
 	<br>
 	<div class="row">
 		<div class="row card-deck">
-			<div class="card col-md-4" style="width: 18rem;">
-	  			<img src="https://i2.wp.com/emotioncard.com.br/wp-content/uploads/2019/05/fotos-paisagens64.jpg?resize=696%2C392&ssl=1" class="card-img-top" alt="...">
+			<div class="card col-md-4 bg" style="width: 18rem;">
+	  			<img src="https://i2.wp.com/emotioncard.com.br/wp-content/uploads/2019/05/fotos-paisagens64.jpg?resize=696%2C392&ssl=1" class="card-img-top img-thumbnail rounded" alt="foto de fundo">
 	  			<div class="card-body">
 			    <h5 class="card-title personalfont" style="font-family: mystylefont">Daniels</h5>
-			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    <p class="card-text" style="color: white;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 			    <a href="#" class="btn btn-primary">Go somewhere</a>
 			  	</div>
 			</div>
