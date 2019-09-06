@@ -1,20 +1,13 @@
 {
-    "name": "kingkernel/marrento",
-    "description": "Framwork  Iceberg",
-    "type": "project",
+    "name": "Kingkernel/marrento",
+    "description": "Framework da Iceberg",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Daniels",
+            "name": "Daniel José dos Santos",
             "email": "daniel.santos.ap@gmail.com"
         }
     ],
-    "require": {
-        "php": ">=5.3.0"
-    },
-    "autoload" : {
-    "psr-0": {
-         ".": "/"
-    },
     "minimum-stability": "dev",
-	"prefer-stable": true
- }
+    "require": {}
+}
