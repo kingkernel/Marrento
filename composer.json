@@ -7,7 +7,7 @@
                 "type": "git",
                 "reference": "master"
             }
-    }
+        },
     "description": "Framework da Iceberg",
     "license": "MIT",
     "authors": [
