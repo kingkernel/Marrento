@@ -14,7 +14,7 @@ css= offlines
 
 [banco_de_dados]
 driver=mysql
-banco=xamasti
+banco=crmaster
 usuario=root
 senha=
 host=127.0.0.1

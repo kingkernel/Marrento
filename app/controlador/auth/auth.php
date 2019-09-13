@@ -8,6 +8,9 @@ class auth {
 	private $password;
 
 	public function __construct(){
+		if(!isset($_REQUEST["user"])||!isset($_REQUEST["snhpwd"])){
+			echo "fail!!";
+		}
 	}
 	public function index(){
 		/**
@@ -22,8 +25,9 @@ class auth {
 		if ($linha["existe"] == 1){
 			$_SESSION["LOGADO"]=TRUE;
 			$_SESSION["usuario"] = $_POST["user"];
-			$logedUser = new authUser_xamasti();
-			$logedUser->login($this->user, $this->password);
+		print_r($_SESSION);
+			//$logedUser = new authUser_xamasti();
+			//$logedUser->login($this->user, $this->password);
 			header("Location: /");
 			 echo "<script>document.reload();</script>";
 		} else {

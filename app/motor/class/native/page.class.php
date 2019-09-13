@@ -41,7 +41,7 @@ class page{
 	}
 	public function subsfields($template, $fields)
 	{
-		preg_match_all('/@field\{\{(\w{2,30})\}\}/', $template, $matches);
+		//preg_match_all('/@field\{\{(\w{2,30})\}\}/', $template, $matches);
 		foreach ($fields as $key => $value) {
 			$template = str_replace('@field{{'.$key.'}}', $value, $template);
 		};

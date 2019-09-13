@@ -1,5 +1,13 @@
 {
     "name": "Kingkernel/marrento",
+    "type":"package",
+    "package":{
+        "source": {
+                "url": "https://github.com/kingkernel/Marrento.git",
+                "type": "git",
+                "reference": "master"
+            }
+    }
     "description": "Framework da Iceberg",
     "license": "MIT",
     "authors": [

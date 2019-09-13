@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+	<html lang="pt-br">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<title>Acerta - CRMaster </title>
+		@field{{cssbootstrap}}
+	</head>
+	<body>
+		<div class="row">
+			<div class="mx-auto text-center">
+				<form class="form-signin" @field{{formpath}} >
+				  <div class="text-center mb-4">
+				    <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+				    <h1 class="h3 mb-3 font-weight-normal">Acerta CRMaster</h1>
+				  </div>
+
+				  <div class="form-label-group">
+				    <input type="text" name="user" class="form-control" placeholder="Usuário" required="" autofocus="">
+				    <label for="inputEmail">Login</label>
+				  </div>
+
+				  <div class="form-label-group">
+				    <input type="password" name="snhpwd" class="form-control" placeholder="Senha" required="">
+				    <label for="inputPassword">Senha</label>
+				  </div>
+
+				  <div class="checkbox mb-3">
+				  </div>
+				  <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+				  <p class="mt-5 mb-3 text-muted text-center">©2019</p>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
