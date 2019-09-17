@@ -16,7 +16,16 @@
             "email": "daniel.santos.ap@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
-    "require": {}
+    "require": {
+        "kingkernel/marrento":"dev-master@dev",
+        "php": ">=5.3.0"
+    },
+    "repositories": [
+    {
+       "type": "vcs",
+       "url": "https://github.com/kingkernel/Marrento" 
+    }
+  ]
 }
