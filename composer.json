@@ -27,10 +27,5 @@
        "type": "vcs",
        "url": "https://github.com/kingkernel/marrento" 
     }
-  ],
-    "autoload": {
-        "psr-0": {
-            "Marrento": "motor/"
-        }
-}
+  ]
 }
