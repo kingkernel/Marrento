@@ -30,6 +30,6 @@
   ],
     "autoload": {
         "psr-0": {
-            "HelloWorld": "src/"
+            "Marrento": "motor/"
         }
 }
