@@ -8,7 +8,7 @@
                 "reference": "master"
             }
         },
-    "description": "Framework da Iceberg",
+    "description": "Framework desenvolvido por Daniel J. Santos",
     "license": "MIT",
     "authors": [
         {
@@ -27,5 +27,9 @@
        "type": "vcs",
        "url": "https://github.com/kingkernel/marrento" 
     }
-  ]
+  ],
+    "autoload": {
+        "psr-0": {
+            "HelloWorld": "src/"
+        }
 }

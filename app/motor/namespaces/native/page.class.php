@@ -20,6 +20,7 @@ class page{
 	public $scriptsendpage;		// scripts para serem adicionadosno fim da pagina
 	public $jsendbody;
 	public $posScript;
+	public $workmode = $_SESSION["load"]["MODE_INTERFACE"];
 	public function __construct(){
 		if(!isset($this->language)){$this->language="pt-br";};if(!isset($this->titlepage)){$this->titlepage="";};if(!isset($this->headersinclude)){$caminho=urlcss($_GET);$this->headersinclude='<link href="'.$caminho.'public/css/bootstrap.min.css" rel="stylesheet"><link href="'.$caminho.'public/css/bootstrap-theme.min.css" rel="stylesheet"><script src="'.$caminho.'public/js/jquery-1.11.1.min.js"></script><script src="'.$caminho.'public/js/bootstrap.min.js"></script><style type="text/css">.label,.glyphicon, .fa{ margin-right:5px; }</style>';};if(!isset($this->scriptsendpage)){$this->scriptsendpage="";};
 	}

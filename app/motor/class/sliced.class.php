@@ -14,7 +14,7 @@ class sliced
 	public function shred($template, $fields = [])
 	{
 		$subst = str_replace(".", "\\", $template);
-		$patterns = ['/@section\(\"(.*)\"\)/', '/@endsection/','/@extends\(\"(.*)\"\)/'];
+		$patterns = ['/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/'];
 		if(file_exists(PATHVISAO . $subst .".section.html"))
 			{
 				$template1 = (file_get_contents(PATHVISAO . $subst .".section.html"));
@@ -50,7 +50,7 @@ class sliced
 				//conteudo do estensor na variavel
 				$extender = file_get_contents(PATHVISAO . $file .".page.html");
 				//padroes a serem pesquisados
-				$patterns = ['/@field\{\{(\w{2,30})\}\}/', '/@section\(\"(.*)\"\)/', '/@endsection/','/@extends\(\"(.*)\"\)/'];
+				$patterns = ['/@field\{\{(\w{2,30})\}\}/', '/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/'];
 				//guardar o conteudo do herdeiro
 				$herdeiro = preg_replace($patterns, "", $template1);
 				//varrer o extender atrás de outras seções

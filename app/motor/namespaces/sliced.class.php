@@ -74,7 +74,7 @@ class sliced
 						$first = str_replace($key, $value, $first);
 					}
 			}
-			preg_match_all('/@field\{\{(\w{2,30})\}\}/', $first, $z);
+			//preg_match_all('/@field\{\{(\w{2,30})\}\}/', $first, $z);
 		print(fastload($first));
 	}
 }

@@ -8,7 +8,7 @@
 ###################################################################################################
 [interface]
 framework = bootstrap
-MODE_INTERFACE=online
+workmode=offline
 version = 4.0.0-alpha.4
 css= offlines
 
