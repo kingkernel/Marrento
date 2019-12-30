@@ -1,4 +1,4 @@
-# :angry: Marrento :angry:
+# :punch: Marrento :angry:
 Framework de aceleração de desenvolvimento para novatos.
 Principais Objetivos:
 * Deixa os caras dos Patterns "fulos" da vida
