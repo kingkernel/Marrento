@@ -5,9 +5,4 @@ Principais Objetivos:
 * Ajudar o Sobrinho do seu tio a fazer "um site"
 * Facilitar a criação sistemas
 
-
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+:fire:
