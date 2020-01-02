@@ -1,8 +1,16 @@
 <?php
-
+/*
+print_r($_SERVER);
+$uri = urldecode(
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+);
+if ($uri !== '/' && file_exists(__DIR__.'/app'.$uri)) {
+    return false;
+}
+*/
+if (!isset($argv[1])){ $argv[1] = '8080';};
 echo " -------------------------------------------\n";
-echo "  SERVER IS STARTED!! \n";
+echo "  SERVER IS STARTED IN \"localhost:". $argv[1] ."\"!\n";
 echo " -------------------------------------------\n";
-$port = '8080';
-shell_exec('php -S localhost:'.$port);
+shell_exec('php -S localhost:'.$argv[1]);
 ?>
