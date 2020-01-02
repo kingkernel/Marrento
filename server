@@ -1,0 +1,8 @@
+<?php
+
+echo " -------------------------------------------\n";
+echo "  SERVER IS STARTED!! \n";
+echo " -------------------------------------------\n";
+$port = '8080';
+shell_exec('php -S localhost:'.$port);
+?>
