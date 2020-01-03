@@ -1,0 +1,15 @@
+<?php
+switch ($argv[1]) {
+	case 'tidyuphouse':
+		echo 'parametro correto';
+		//print_r($_SERVER);
+		if ($_SERVER["OS"] == "Windows_NT"){
+
+		}
+		break;
+	
+	default:
+		echo 'comando errado!';
+		break;
+}
+?>
