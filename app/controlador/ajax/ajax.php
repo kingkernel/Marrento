@@ -24,5 +24,10 @@ class ajax {
     $panel_0->alertText = $table->html();
     echo $panel_0->html();
 	}
+  public function frase()
+  {
+    echo "minha frase ajax";
+    print_r($_POST);
+  }
 }
 ?>
