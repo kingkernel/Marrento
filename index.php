@@ -9,7 +9,6 @@
 ###################################################################################################
 **/
 //	inicializa a sessão para todo o site
-print_r($_SERVER);
 session_start();
 // declaramos algumas configurações num arquivo ini, tipo usuario, banco senha...
 $_SESSION["load"]=parse_ini_file("config.ini.php", true);
