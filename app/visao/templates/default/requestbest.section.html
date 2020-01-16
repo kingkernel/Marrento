@@ -1,24 +1,30 @@
 <script type="text/javascript" src="public/js/vue.js"></script>
 <script type="text/javascript" src="public/js/jquery-1.11.1.min.js"></script>
 <div id="demo">
-	<p>{{message}}</p>
+	<p id="frase">{{message}}</p>
 	<input type="text" v-model="message" id="teste"/><button id="vai">pega</button>
 </div>
 <script type="text/javascript">
-	var tese = $("#teste").val();
-	var demo = new Vue({
-		el:'#demo',
-		data: {
-			message: tese
-		}
-	});
-
 function getmydata()
 	{
+		/*
 	$.ajax({
 		method : "POST",
 		url : "ajax/frase",
-		data : {nome: "daniel", email: "daniel.santos"}
+		data : {nome: "daniel", email: "daniel.santos"},
+
+	}).done(function(msg){
+	 	$("#frase").html(msg);
+		});
+		*/
+		$("#frase").load("ajax/frase", {nome: "daniels"});
+};	var nomepessoa = $("#teste").val();
+	var vue = new Vue({
+		el: "#demo",
+		data : {
+			message: nomepessoa
+		}
 	});
-	}
+	var execute = setInterval(function(){$("#frase").load("ajax/frase", {nome: nomepessoa})}, 1000);
+	$("#frase").html(execute);
 </script>

@@ -26,8 +26,11 @@ class ajax {
 	}
   public function frase()
   {
-    echo "minha frase ajax";
-    print_r($_POST);
+    if ($_POST["nome"]=="daniels"){
+      echo "criador";
+    } else {
+      echo "ola mundo!";
+    }
   }
 }
 ?>
