@@ -13,7 +13,7 @@ class sliced
 	}
 	public function shred($template, $fields = [])
 	{
-		$subst = str_replace(".", "\\", $template);
+		$subst = str_replace(".", "/", $template);
 		$patterns = ['/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/'];
 		if(file_exists(PATHVISAO . $subst .".section.html"))
 			{
@@ -31,7 +31,7 @@ class sliced
 				preg_match_all('/@section\(\"(.*)\"\)/', $template1, $result);
 				foreach ($result[1] as $key => $value) 
 				{
-					$value = str_replace(".", "\\", $value);
+					$value = str_replace(".", "/", $value);
 					$file = preg_replace($patterns, "", file_get_contents(PATHVISAO . $value .".section.html"));
 					$template1 = str_replace($result[0][$key], $file, $template1);
 					array_push($sections, $file);
@@ -46,7 +46,7 @@ class sliced
 				//qual arquivo será extendido
 				preg_match('/@extends\(\"(.*)\"\)/', $content, $x);
 				//substitui pontos por barra
-				$file = str_replace(".", "\\", $x[1]);
+				$file = str_replace(".", "/", $x[1]);
 				//conteudo do estensor na variavel
 				$extender = file_get_contents(PATHVISAO . $file .".page.html");
 				//padroes a serem pesquisados
@@ -63,7 +63,7 @@ class sliced
 				$matchscontent = [];
 				foreach ($x[1] as $key => $value) 
 					{
-						$path = str_replace(".", "\\", $value);
+						$path = str_replace(".", "/", $value);
 						$y = file_get_contents(PATHVISAO . $path .".section.html");
 						$y = preg_replace($patterns, "", $y);
 						array_push($matchscontent, $y);

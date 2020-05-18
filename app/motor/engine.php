@@ -67,6 +67,16 @@ function redux($data){
     $compatada = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", $data);
     return $compatada;
 };
+function substvalue(array $fields)
+{
+                $js = "";
+                foreach ($fields as $key => $value) 
+                    {
+
+                        $js .= '$("input[name=\''.$key.'\']").val("'.$value.'");';
+                    }
+                return $js;
+};
 function fastquery($sql){
 /**
     Nome:               fastquery
@@ -80,8 +90,16 @@ function fastquery($sql){
     $pdo->exec($sql);
     
 };
-
-
+function mappingToProcedure (array $lista1, $query)
+    {
+        foreach ($lista1 as $key => $value) {
+            if(is_string($value)){
+                $value = '"'.$value.'"';
+            };
+            $query = str_replace("@".$key, $value, $query);
+        }
+        return  $query;
+    }
 ###################################################################################################
 function creadPostValid_($post){
     /*
