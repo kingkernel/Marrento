@@ -53,7 +53,7 @@ class page {
 	*/
 	public function help()
 	{
-		$fields = ["classname" => get_class(), "classdescription" => "A Classe page é uma das principais classes do sistema, responsavel por ler as paginas em HTML se se encarregar de verificar a autenticidade do usuário"];
+		$fields = ["classname" => get_class(), "classdescription" => "A Classe page é uma das principais classes do sistema, responsavel por ler as paginas em HTML se de  verificar a autenticidade do usuário"];
 		$this->loadview("thishelp.". get_class(), $fields);
 	}
 }
