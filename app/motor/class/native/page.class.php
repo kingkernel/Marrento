@@ -1,5 +1,5 @@
 <?php
-class page{
+class page {
 	/**
 	Classe: page || classe que gera a página
 	Data criação: 03/12/2016
