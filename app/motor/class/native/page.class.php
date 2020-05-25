@@ -29,11 +29,6 @@ class page {
 		$data ='<!DOCTYPE html><html lang="'.$this->language.'"><head><meta charset="utf-8">'.$this->outrosmeta.'<title>'.$this->titlepage.'</title><meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">'.$this->headersinclude.'</head><body '.$this->bodyextras.'>'.$this->bodycontent.'</body>'.$this->jsendbody.'<script type="text/javascript">'.$this->scriptsendpage.'</script>'.$this->posScript.'</html>';
 		echo redux($data);
 	}
-	public function help(){
-		$content = getjs("./".PUBLICDIR."thisHelp/".get_class(). ".html");
-		$this->bodycontent = $content;
-		$this->render();
-	}
 	public function loadview($template, $variables = [])
 	{
 		$pagina = new sliced;
@@ -48,6 +43,18 @@ class page {
 			$template = str_replace('@field{{'.$key.'}}', $value, $template);
 		};
 		return $template;
+	}
+	/*
+	public function help(){
+		$content = getjs("./".PUBLICDIR."thisHelp/".get_class(). ".html");
+		$this->bodycontent = $content;
+		$this->render();
+	}
+	*/
+	public function help()
+	{
+		$fields = ["classname" => get_class(), "classdescription" => "A Classe page é uma das principais classes do sistema, responsavel por ler as paginas em HTML se se encarregar de verificar a autenticidade do usuário"];
+		$this->loadview("thishelp.". get_class(), $fields);
 	}
 }
 ?>
