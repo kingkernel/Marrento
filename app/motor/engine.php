@@ -56,6 +56,13 @@ function compactada($template){
     $compatada = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", file_get_contents($template));
     return $compatada;
 };
+function subsfields($template, $fields){
+        $compatado = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", file_get_contents($template));
+        foreach ($fields as $key => $value) {
+            $compatado = str_replace('@field{{'.$key.'}}', $value, $compatado);
+        };
+        return $compatado;
+};
 function fastload($template){
     $exitfile = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", $template);
     return $exitfile;
@@ -66,16 +73,6 @@ function fontAwesome($pastas){
 function redux($data){
     $compatada = preg_replace(array("/\n/", "/\s{2}/", "/\t/"), "", $data);
     return $compatada;
-};
-function substvalue(array $fields)
-{
-                $js = "";
-                foreach ($fields as $key => $value) 
-                    {
-
-                        $js .= '$("input[name=\''.$key.'\']").val("'.$value.'");';
-                    }
-                return $js;
 };
 function fastquery($sql){
 /**
@@ -90,16 +87,8 @@ function fastquery($sql){
     $pdo->exec($sql);
     
 };
-function mappingToProcedure (array $lista1, $query)
-    {
-        foreach ($lista1 as $key => $value) {
-            if(is_string($value)){
-                $value = '"'.$value.'"';
-            };
-            $query = str_replace("@".$key, $value, $query);
-        }
-        return  $query;
-    }
+
+
 ###################################################################################################
 function creadPostValid_($post){
     /*
@@ -333,5 +322,13 @@ function out_data_ ($pegaadata){
             $pronto = implode("/", $revertido); // junta o array separando com "-" em uma única string
             //echo $pronto . "<br/>";   // para debugar
             return $pronto;
+        };
+function percentual($parcial, $total){
+            if ($parcial == $total){
+             $result = 100;
+            } else {
+                $result = ($parcial * 100) / $total;
+            }
+            return $result;
         };
 ?>
