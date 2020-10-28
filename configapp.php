@@ -9,8 +9,7 @@
  	Últimas alterações: 28/10/2020
 ###############################################################################
 @param: defaultdatabase => array contendo informações do banco de dados padrão.
-@return: array
-
+@return: array com informações
 **/
 return 	["defaultdatabase"=>
 	[
