@@ -4,14 +4,21 @@
 	ARQUIVO: index.php
   	Funções relacionados ao controlador geral do MVC. Arquivo inicial
   	Criador: Daniel José dos Santos
+  	Email: daniel.santos.ap@gmail.com
  	Criação: 15/11/2017
- 	Últimas alterações: 25/06/2019
+ 	Últimas alterações: 28/10/2020
 ###################################################################################################
+**/
+/**
+PREPARATIVOS PARA A VERSÃO 2.0
 **/
 //	inicializa a sessão para todo o site
 session_start();
+$app = include("configapp.php");
+print_r($app["defaultdatabase"]);
 // declaramos algumas configurações num arquivo ini, tipo usuario, banco senha...
 $_SESSION["load"]=parse_ini_file("config.ini.php", true);
+
 //	define as constantes de localização
 define ("SITENAME", $_SERVER["SERVER_NAME"]);
 define ("PATHCONTROLER", __DIR__ . "/app/controlador/");
@@ -21,6 +28,7 @@ define ("PATHMOTOR", __DIR__ . "/app/motor/");
 define ("PUBLICDIR", "/public/");
 define ("FONTES", __DIR__. "/public/fonts/net/");
 define ("CLASSES", __DIR__. "/app/motor/class/");
+
 //	Faz a leitura automática de classes. todas classes do sitema devem estar nessas pastas
 //class 						-> Classes ainda em desenvolvimento e não  prontas para utilização no framework
 //class/native 					-> Classes nativas e são o core principal do framework.
