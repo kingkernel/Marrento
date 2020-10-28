@@ -12,10 +12,12 @@
 /**
 PREPARATIVOS PARA A VERSÃO 2.0
 **/
+// variavel app que futuramente conterá as informações gerais da aplicação
+$app = include("configapp.php");
+
 //	inicializa a sessão para todo o site
 session_start();
-$app = include("configapp.php");
-print_r($app["defaultdatabase"]);
+
 // declaramos algumas configurações num arquivo ini, tipo usuario, banco senha...
 $_SESSION["load"]=parse_ini_file("config.ini.php", true);
 
