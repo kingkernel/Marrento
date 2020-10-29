@@ -11,11 +11,12 @@
 @param: defaultdatabase => array contendo informações do banco de dados padrão.
 @return: array com informações
 **/
-return 	["defaultdatabase"=>
+return 	["version" => "2.0 codname:Vegeta",
+	"defaultdatabase"=>
 	[
 	"database" 	=>"database",
 	"user"		=>"user",
 	"password"	=>"password",
 	"host"	 	=>"ip"
-		]];
+	]];
 ?>

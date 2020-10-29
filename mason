@@ -1,0 +1,28 @@
+<?php
+/**
+###################################################################################################
+	ARQUIVO: mason
+  	ferramenta CLI do Marrento
+  	Criador: Daniels Hogans
+  	e-mail: daniel.santos.ap@gmail.com
+ 	Criação: 28/10/2020
+ 	Últimas alterações: 28/10/2020
+###################################################################################################
+**/
+$app = include(__DIR__ . "/app/config/configapp.php");
+switch($argv[1])
+	{
+		case 'version':
+			echo "  Marrento now is ". $app["version"];
+		break;
+		case 'help':
+			echo 'Mason é a ferramenta de linha de comando do Marrento. Esta versão 
+é "'.$app["version"].'". Desenvolvido na Daniels Hogans. Os comandos 
+			iniciais são:
+			version :  mostra a versão da engine do Marrento.';
+		break;
+		default:
+			echo "ferramenta de linha de comando";
+		break;
+	};
+?>

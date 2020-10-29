@@ -1,5 +1,5 @@
 <?php
-if (!isset($argv[1])){ $argv[1] = '8080';};
+if (isset($argv[1]) ? $argv[1] : $argv[1]='8080');
 echo " -------------------------------------------\n";
 echo "  SERVER IS STARTED IN \"localhost:". $argv[1] ."\"!\n";
 echo " -------------------------------------------\n";
