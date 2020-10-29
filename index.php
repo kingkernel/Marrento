@@ -29,10 +29,10 @@ define ("CLASSES", __DIR__. "/app/motor/class/");
 spl_autoload_register(function ($class_name) {
 	if (file_exists(PATHMOTOR . "class/" . $class_name . '.class.php')){
 		include PATHMOTOR . "class/" . $class_name . '.class.php';
-	} elseif (file_exists(PATHMOTOR . "class/native/front-end/" . $class_name . '.class.php')) {
-		include PATHMOTOR . "class/native/front-end/" . $class_name . '.class.php';
-	} elseif(file_exists(PATHMOTOR . "class/native/back-end/" . $class_name . '.class.php')){
-		include PATHMOTOR . "class/native/back-end/" . $class_name . '.class.php';
+	} elseif (file_exists(PATHMOTOR . "class/native/front-end/" . $class_name . '.php')) {
+		include PATHMOTOR . "class/native/front-end/" . $class_name . '.php';
+	} elseif(file_exists(PATHMOTOR . "class/native/back-end/" . $class_name . '.php')){
+		include PATHMOTOR . "class/native/back-end/" . $class_name . '.php';
 	} else {
 		include PATHMOTOR . "class/native/" . $class_name . '.class.php';
 	};
