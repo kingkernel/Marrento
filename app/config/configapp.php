@@ -11,7 +11,9 @@
 @param: defaultdatabase => array contendo informações do banco de dados padrão.
 @return: array com informações
 **/
-return 	["version" => "2.0 codname:Vegeta",
+return 	["version" 	=> "2.0 codname:Vegeta",
+	"secret_key" 	=> "minha_palavra_secreta",
+	"hash_system" 	=> "",
 	"defaultdatabase"=>
 	[
 	"database" 	=>"database",
