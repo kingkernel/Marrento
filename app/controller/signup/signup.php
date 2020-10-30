@@ -3,7 +3,10 @@
     {
         public function index()
         {
-           echo 'rota signup criada!';
+			$path = "/app/view/templates/startbootstrapadmin/";	
+			$fields = ["pathtemplate" => $path,
+				"title"=>"KingBusca - Encontre Produtos, Serviços ou Aluguel"];
+			$this->loadview("templates.startbootstrapadmin.register", $fields);
         }
     }
 ?>

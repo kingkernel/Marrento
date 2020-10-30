@@ -8,7 +8,7 @@ class index  extends page {
 	{
 		if (!isset($_SESSION["LOGADO"]))
 		{	
-			$path = "./app/view/templates/startbootstrapadmin/";	
+			$path = "/app/view/templates/startbootstrapadmin/";	
 			$fields = ["pathtemplate" => $path,
 				"title"=>"KingBusca - Encontre Produtos, Serviços ou Aluguel"];
 			//$this->loadview("templates.deskapp.index", $fields);
