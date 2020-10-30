@@ -14,10 +14,11 @@ session_start();
 $_SESSION["load"]=parse_ini_file("config.ini.php", true);
 //	define as constantes de localização
 define ("SITENAME", $_SERVER["SERVER_NAME"]);
-define ("PATHCONTROLER", __DIR__ . "/app/controlador/");
+define ("PATHCONTROLER", __DIR__ . "/app/controller/");
 define ("PATHMODELO", __DIR__ . "/app/modelo/");
-define ("PATHVISAO", __DIR__ . "/app/visao/");
-define ("PATHMOTOR", __DIR__ . "/app/motor/");
+define ("PATHVIEW", __DIR__ . "/app/view/");
+define ("PATHTEMPLATES", __DIR__ . "/app/view/templates/");
+define ("PATHENGINE", __DIR__ . "/app/engine/");
 define ("PUBLICDIR", "/public/");
 define ("FONTES", __DIR__. "/public/fonts/net/");
 define ("CLASSES", __DIR__. "/app/motor/class/");
@@ -27,18 +28,18 @@ define ("CLASSES", __DIR__. "/app/motor/class/");
 //class/native/front-end 		-> Classes referentes a interface de usuario devem ser colocadas nesta pasta
 //class/native/back-end 		-> Classes referentes a Back-end devem ser colocadas nessa pasta
 spl_autoload_register(function ($class_name) {
-	if (file_exists(PATHMOTOR . "class/" . $class_name . '.class.php')){
-		include PATHMOTOR . "class/" . $class_name . '.class.php';
-	} elseif (file_exists(PATHMOTOR . "class/native/front-end/" . $class_name . '.php')) {
+	if (file_exists(PATHENGINE . "class/" . $class_name . '.class.php')){
+		include PATHENGINE . "class/" . $class_name . '.class.php';
+	} elseif (file_exists(PATHENGINE . "class/native/front-end/" . $class_name . '.php')) {
 		include PATHMOTOR . "class/native/front-end/" . $class_name . '.php';
-	} elseif(file_exists(PATHMOTOR . "class/native/back-end/" . $class_name . '.php')){
-		include PATHMOTOR . "class/native/back-end/" . $class_name . '.php';
+	} elseif(file_exists(PATHENGINE . "class/native/back-end/" . $class_name . '.php')){
+		include PATHENGINE . "class/native/back-end/" . $class_name . '.php';
 	} else {
-		include PATHMOTOR . "class/native/" . $class_name . '.class.php';
+		include PATHENGINE . "class/native/" . $class_name . '.class.php';
 	};
 });
 // Arquivo com as funções principais e básicas do sistema
-require(PATHMOTOR."engine.php");
+require(PATHENGINE."engine.php");
 //	se existir o conteudo digitado, aceite, se não, o conteudo se torna "index/index"
 if (isset($_GET["url"]) ? $_GET["url"] . "/" : $_GET["url"] = "index/index");
 //	separe o que foi digitado, por barras e transforme a variavel em array, convertendo em minúsculo

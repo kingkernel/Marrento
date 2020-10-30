@@ -44,13 +44,6 @@ class page {
 		};
 		return $template;
 	}
-	/*
-	public function help(){
-		$content = getjs("./".PUBLICDIR."thisHelp/".get_class(). ".html");
-		$this->bodycontent = $content;
-		$this->render();
-	}
-	*/
 	public function help()
 	{
 		$fields = ["classname" => get_class(), "classdescription" => "A Classe page é uma das principais classes do sistema, responsavel por ler as paginas em HTML se de  verificar a autenticidade do usuário"];

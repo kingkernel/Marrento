@@ -4,7 +4,7 @@ class pagesError {
 
 	}
 	public function E404(){
-	echo "erro 404!";
+	echo "GET FILE";
 	}
 }
 ?>
