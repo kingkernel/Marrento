@@ -1,35 +1,49 @@
 <?php
+/**
+###############################################################################
+	arquivo: sendhtmlmail.class.php
+	Data de criação: 30/10/2020
+	Ultima Alteração: 30/10/2020
+	Autor: Daniel J. Santos
+	Email: Daniel.santos.ap@gmail.com
+###############################################################################
+**/
 	class sendhtmlmail 
 	{
-		private $sender;
-		private $to;
+		public $sender;
+		public $to;
 		public $template;
 		public $subject;
 		public $header;
+		public $mensagem;
 
 		public function __construct()
 		{
-			// Dados de Envio
-			$email_enviar = "Nome de Identificação <email@dominio.com.br>";
-
-			$this->header = 'MIME-Version: 1.0' . "\r\n";
-			$this->header .= 'Content-type: text/html; charset=iso-8859-1;' . "\r\n";
-			$this->header .= "Return-Path: ".$this->to." \r\n";
-			$this->header .= "From: $email_enviar \r\n";
-			$this->header .= "Reply-To: $email_enviar \r\n";			
+		
 		}
-		public function content($mensagem)
+		public function content()
 		{
-			$mensagem = "<h1>Titulo do Email</h1>";
+			$sender = $this->sender;
+			$to = $this->to;
+			$header = "MIME-Version: 1.0	\r\n";
+			$header .= 'Content-type: text/html; charset=iso-8859-1;' . "\r\n";
+			$header .= 'Return-Path: ';
+			$header .= $sender;
+			$header .=" \r\n";
+			$header .= "From: $to \r\n";
+			$header .= "Reply-To: $this->sender \r\n";
+			$mensagem = "<h1>Olá tudo bem?</h1>";
 			$mensagem .= "Aqui vem a <b>mensagem</b> do email. <br />";
-			$mensagem .= "Att. <br /> <b>Mauricio Programador</b>";
+			$mensagem .= "Att. <br /> <b>Daniels Hogans</b>";
+			$this->mensagem = $mensagem;
+			$this->header = $header;
+			return $this->mensagem; $this->header;
 		}
 		public function send()
 		{
-			// Envia o Email
-			if(mail($this->to, $this->subject, $mensagem, $this->header))
+			if(mail($this->to, $this->subject, $this->mensagem, $this->header))
 			{
-				echo "Mensagem enviada com sucesso.";
+				echo "Mensagem enviada com sucesso.!!!";
 			}
 			else
 			{
