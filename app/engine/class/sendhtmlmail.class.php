@@ -15,13 +15,19 @@
 		public $template;
 		public $subject;
 		public $header;
-		public $mensagem;
+		public $message;
 
 		public function __construct()
 		{
 		
 		}
-		public function content()
+		public function loadtemplate($template, $fields)
+		{
+			$html = subsfields($template, $fields);
+			$this->message = $html;
+			return $this->message;
+		}
+		public function send()
 		{
 			$sender = $this->sender;
 			$to = $this->to;
@@ -32,18 +38,10 @@
 			$header .=" \r\n";
 			$header .= "From: $to \r\n";
 			$header .= "Reply-To: $this->sender \r\n";
-			$mensagem = "<h1>Olá tudo bem?</h1>";
-			$mensagem .= "Aqui vem a <b>mensagem</b> do email. <br />";
-			$mensagem .= "Att. <br /> <b>Daniels Hogans</b>";
-			$this->mensagem = $mensagem;
 			$this->header = $header;
-			return $this->mensagem; $this->header;
-		}
-		public function send()
-		{
-			if(mail($this->to, $this->subject, $this->mensagem, $this->header))
+			if(mail($this->to, $this->subject, $this->message, $this->header))
 			{
-				echo "Mensagem enviada com sucesso.!!!";
+
 			}
 			else
 			{

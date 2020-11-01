@@ -10,6 +10,8 @@
 **/
 //	inicializa a sessão para todo o site
 session_start();
+$app = require("app/config/configapp.php");
+GLOBAL $app;
 // declaramos algumas configurações num arquivo ini, tipo usuario, banco senha...
 $_SESSION["load"]=parse_ini_file("config.ini.php", true);
 //	define as constantes de localização

@@ -16,9 +16,9 @@ return 	["version" 	=> "2.0 codname:Vegeta",
 	"hash_system" 	=> "",
 	"defaultdatabase"=>
 	[
-	"database" 	=>"database",
-	"user"		=>"user",
-	"password"	=>"password",
-	"host"	 	=>"ip"
+	"database" 	=>"kingbusca",
+	"user"		=>"root",
+	"password"	=>"",
+	"host"	 	=>"localhost"
 	]];
 ?>

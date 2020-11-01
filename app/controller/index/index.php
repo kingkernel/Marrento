@@ -2,7 +2,6 @@
 class index  extends page {
 	public function __construct()
 	{
-
 	}
 	public function index()
 	{
