@@ -301,7 +301,7 @@ class submit_{
         return $this->somacontent;
     }
 }
-function in_data_ ($pegaadata){
+function dateBrIn($pegaadata){
             $tratando = explode("/", $pegaadata); // pega a data e divide em array 
             //print_r($tratando);       // para debugar
             //echo "<br/>";             // para debugar
@@ -312,6 +312,10 @@ function in_data_ ($pegaadata){
             //echo $pronto . "<br/>";   // para debugar
             return $pronto;
         };
+function foneBRtoNum($num){
+    $fone = str_replace(" ","",str_replace("(", "",str_replace(")", "",str_replace("-", "", $num))));
+    return $fone;
+}
 function out_data_ ($pegaadata){
             $tratando = explode("-", $pegaadata); // pega a data e divide em array 
             //print_r($tratando);       // para debugar

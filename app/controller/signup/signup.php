@@ -27,11 +27,11 @@
                     $query = fastquery($sql);
                     //prepara e-mail de ativação
                     $mail = new sendhtmlmail();
-                    $mail->subject = "cadastro de membro";
+                    $mail->subject = "KINGBUSCA - cadastro de membro ";
                     $mail->to = $mailaddress;
                     $mail->sender = "daniel.santos.ap@gmail.com";
                     $mensagem = "app/view/templates/mailtemplates/signupstart.page.html";
-                    $link = ["linkstart" => $stamp];
+                    $link = ["linkstart" => "http://".$_SERVER['SERVER_NAME']."/signup/active/". $stamp.":".$mailaddress];
                     $mail->loadtemplate($mensagem, $link);
                     $mail->send();
                     $this->loadview("templates.startbootstrapadmin.registered");
@@ -43,6 +43,41 @@
         public function remember()
         {
             echo "relembrar a senha";
+        }
+        public function active()
+        {
+            $div = explode("/", $_GET["url"]);
+            $parts = explode(":", $div[2]);
+            $hash = $parts[0];
+            $member = $parts[1];
+            $sql = 'call verifyactive("'.$member.'", "'.$hash.'")';
+            $query = queryDb($sql);
+            if ($query->rowCount()>0){
+                $dados = $query->fetch(PDO::FETCH_ASSOC);
+                $fields = ["idmember"=>$dados["id"]];
+                $this->loadview("templates.startbootstrapadmin.formactivemember", $fields);
+            } else {
+                echo "link invalido";
+            };
+        }
+        public function finish()
+        {
+            if(isset($_POST["idmember"])){
+                $nasc = dateBrIn($_POST["nascimento"]);
+                $cep = str_replace("-", "", $_POST["cep"]);
+                $fone = foneBRtoNum($_POST["fone"]);
+                $whasapp = foneBRtoNum($_POST["whatsapp"]);
+                $frase = $GLOBALS["app"]["secret_key"];
+                $hash = $GLOBALS["app"]["hash_system"];
+                $pass = base64_encode(sha1(md5(sha1($frase.":".$_POST["passkey"]."|".$hash))));
+                $sql = 'call upmember('.$_POST["idmember"].', "'.$_POST["complemento"].'", "'.$_POST["numero"].'", '
+                .$cep.', "'.$_POST["logradouro"].'", "'.$_POST["bairro"].'", "'.$_POST["cidade"].'", "'.$_POST["estado"]
+                .'", "'.$fone.'", "'.$_POST["facebook"].'", "'.$whasapp.'", "'.$_POST["genero"].'", "'.$nasc.'", "'
+                .$_POST["sobrenome"].'", "'.$_POST["membro"].'", "'.$pass.'")';
+                echo $sql."<br/>";
+            } else {
+                header("Location: /");
+            };
         }
     }
 ?>

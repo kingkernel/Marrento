@@ -12,8 +12,8 @@
 @return: array com informações
 **/
 return 	["version" 	=> "2.0 codname:Vegeta",
-	"secret_key" 	=> "minha_palavra_secreta",
-	"hash_system" 	=> "",
+	"secret_key" 	=> "kingkernel é sucesso",
+	"hash_system" 	=> "e28c185ec3d74acfa605da189c71bcf0",
 	"defaultdatabase"=>
 	[
 	"database" 	=>"kingbusca",

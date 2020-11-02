@@ -32,8 +32,8 @@
 			$sender = $this->sender;
 			$to = $this->to;
 			$header = "MIME-Version: 1.0	\r\n";
-			$header .= 'Content-type: text/html; charset=iso-8859-1;' . "\r\n";
-			$header .= 'Return-Path: ';
+			$header .= 'Content-type: text/html; charset=utf-8;' . "\r\n";
+			$header .= 'Return-Path: daniel.mogi@kingkernel.com.br';
 			$header .= $sender;
 			$header .=" \r\n";
 			$header .= "From: $to \r\n";
@@ -41,7 +41,7 @@
 			$this->header = $header;
 			if(mail($this->to, $this->subject, $this->message, $this->header))
 			{
-
+				echo 'ok';
 			}
 			else
 			{
