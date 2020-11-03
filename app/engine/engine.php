@@ -85,7 +85,7 @@ function fastquery($sql){
     $pdo = new pdo($_SESSION["load"]["banco_de_dados"]["driver"] . ":dbname=". $_SESSION["load"]["banco_de_dados"]["banco"] . ";charset=UTF8;host=" . $_SESSION["load"]["banco_de_dados"]["host"] . ";" , $_SESSION["load"]["banco_de_dados"]["usuario"], $_SESSION["load"]["banco_de_dados"]["senha"]);
     //$pdo->prepare($sql);
     $pdo->exec($sql);
-    
+    return $pdo;
 };
 
 

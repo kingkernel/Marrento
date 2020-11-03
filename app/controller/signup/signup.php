@@ -74,7 +74,11 @@
                 .$cep.', "'.$_POST["logradouro"].'", "'.$_POST["bairro"].'", "'.$_POST["cidade"].'", "'.$_POST["estado"]
                 .'", "'.$fone.'", "'.$_POST["facebook"].'", "'.$whasapp.'", "'.$_POST["genero"].'", "'.$nasc.'", "'
                 .$_POST["sobrenome"].'", "'.$_POST["membro"].'", "'.$pass.'")';
-                echo $sql."<br/>";
+                if (fastquery($sql)){
+                    $this->loadview("templates.startbootstrapadmin.finish");
+                } else {
+                    echo "falha";
+                };
             } else {
                 header("Location: /");
             };
