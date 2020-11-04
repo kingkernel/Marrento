@@ -23,11 +23,11 @@
                                         <form action="/login/start/" method="POST">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="EmailAddress">E-mail:</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Seu endereço de E-mail" />
+                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Seu endereço de E-mail" name="emailuser"/>
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputPassword">Senha:</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Sua senha" />
+                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Sua senha" name="passkeyuser"/>
                                             </div>
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
@@ -35,7 +35,7 @@
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="/signup/remember/">Esqueceu a senha?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
+                                                <input type="submit" class="btn btn-primary" value="Login">
                                             </div>
                                         </form>
                                     </div>
