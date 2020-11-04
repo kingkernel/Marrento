@@ -1,0 +1,14 @@
+<div id="app">
+	<app-nav></app-nav>
+	<app-view>
+		<app-sidebar></app-sidebar>
+		<app-content>{{message}}</app-content>
+	</app-view>
+</div>
+<script src="/public/js/vue.min.js"></script>
+<script >
+	var demo = new Vue({
+		el: "#app",
+		data: {message: "meu texto"}
+	})
+</script>
