@@ -20,11 +20,12 @@
                     $sql = 'call datauser('.$dados["userid"].')';
                     $query = queryDb($sql);
                     $dados = $query->fetch(PDO::FETCH_ASSOC);
-                    print_r($dados);
+                    $user = new authuser;
+                        $user->colletdata($dados);
+                        header("Location: /");
                     } else {
                         echo "faill";
                     }
-
             } else{
                 echo "fail";
             };

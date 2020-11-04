@@ -12,7 +12,18 @@ class index  extends page {
 				"title"=>"KingBusca - Encontre Produtos, Serviços ou Aluguel"];
 			$this->loadview($this->subsfields("templates.startbootstrapadmin.index", $fields),$fields);
 		} else {
-			$this->loadview("templates.acerta.logado", $campos);
+			$info = json_decode($_SESSION["userinfo"], true);
+			switch ($info["typeaccount"])
+			{
+				case "free":
+				echo "conta gratis";
+				break;
+
+				case "tester":
+				echo "conta de testers";
+				break;
+			};
+			//$this->loadview("templates.startbootstrapadmin.index");
 		}
 	}
 }
