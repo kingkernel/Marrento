@@ -1,0 +1,74 @@
+@section("templates.startbootstrapadmin.sections.headerpage")
+    <body class="sb-nav-fixed">
+@section("templates.startbootstrapadmin.sections.navlogon")
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+@section("templates.startbootstrapadmin.sections.sidemenulogon")
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Novo Desejo</h1>
+                        <div class="row">
+                            <fieldset>
+                                <form method="POST" action="/wish/cad/">
+                                    <input type="hidden" name="idmember" value="@field{{idmember}}">
+                                    <div class="form-group">
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-shopping-basket text-info"></i></div>
+                                            </div>
+                                            <select class="form-control" id="typewish" name="typewish" required>
+                                               @field{{modality}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mt-md-4">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-question text-info"></i></div>
+                                            </div>
+                                            <input type="text" class="form-control" id="desejo" name="desejo" placeholder="o que gostaria?" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group md-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-pencil-alt text-info"></i></div>
+                                            </div>
+                                            <input type="text" class="form-control" id="descric" name="descric" placeholder="descreva um pouco" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group md-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="fa fa-tags text-info"></i></div>
+                                            </div>
+                                            <textarea class="form-control" id="tagsarea" name="tagsarea" placeholder="crie tags (utilize '#' e separe por espaços)" required rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group md-2">
+                                            <input type="submit" value="cadastrar" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                </form>
+                            </fieldset>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+@section("templates.startbootstrapadmin.sections.footerpagelogon")

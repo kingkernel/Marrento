@@ -2,13 +2,24 @@
 	<app-nav></app-nav>
 	<app-view>
 		<app-sidebar></app-sidebar>
-		<app-content>{{message}}</app-content>
+		<app-content>
+			{{message}}
+			<hello></hello>
+		</app-content>
 	</app-view>
 </div>
+<template id="hello-template">
+	<div>
+		<h1>hello world</h1>
+	</div>
+</template>
 <script src="/public/js/vue.min.js"></script>
 <script >
+		Vue.component("hello", {
+		template:'#hello-template'
+	});
 	var demo = new Vue({
 		el: "#app",
-		data: {message: "meu texto"}
+		data: {message: "Aprendendo vue"}
 	})
 </script>
