@@ -3,23 +3,25 @@
 	<app-view>
 		<app-sidebar></app-sidebar>
 		<app-content>
-			{{message}}
+			<ul>
+				<li v-for="product in products">
+					{{product.id}}
+				</li>
+			</ul>
 			<hello></hello>
 		</app-content>
 	</app-view>
 </div>
-<template id="hello-template">
-	<div>
-		<h1>hello world</h1>
-	</div>
-</template>
 <script src="/public/js/vue.min.js"></script>
-<script >
-		Vue.component("hello", {
-		template:'#hello-template'
-	});
+<script type>
 	var demo = new Vue({
 		el: "#app",
-		data: {message: "Aprendendo vue"}
+		data: {
+			products:
+			[
+					fetch("http://127.0.0.2/api/")
+					.then(response => {response})
+			]
+		}
 	})
 </script>

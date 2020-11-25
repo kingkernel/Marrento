@@ -5,7 +5,7 @@
         {
            if(isset($_SESSION["LOGADO"]))
            {
-           	echo "logado";
+           	$this->loadview("templates.outhers.user_profile");
            } else {
            	echo "deslogado";
            }
