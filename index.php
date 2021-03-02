@@ -14,6 +14,7 @@ $app = require("app/config/configapp.php");
 GLOBAL $app;
 // declaramos algumas configurações num arquivo ini, tipo usuario, banco senha...
 $_SESSION["load"]=parse_ini_file("config.ini.php", true);
+$_ENV = parse_ini_file(".env", true);
 //	define as constantes de localização
 define ("SITENAME", $_SERVER["SERVER_NAME"]);
 define ("PATHCONTROLER", __DIR__ . "/app/controller/");
