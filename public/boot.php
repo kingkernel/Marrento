@@ -9,13 +9,17 @@
 //header("Location: ./");
 //print_r($_SERVER["REQUEST_URI"]);
 $file = explode("/", $_SERVER["REQUEST_URI"]);
-print_r($file);
 if(isset($_GET["url"]))
+echo "<h1>".$_SERVER['REQUEST_METHOD']."</h1>";
+class a 
 {
-    //print_r($_GET["url"]);
+    public function index()
+    {
+        echo "achou!! ";
+    }
 }
-include("dan.php");
-echo phpinfo();
+$start = new $file[1];
+$start->{$file[2]}();
 //[REQUEST_METHOD] => GET
 //[REQUEST_URI] => /
 //[SCRIPT_NAME] => /index.php
