@@ -5,6 +5,7 @@ class index  extends page {
 	}
 	public function index()
 	{
+		/*
 		$path = "/app/view/templates/startbootstrapadmin/";	
 		$fields = ["pathtemplate" => $path,
 				"title"=>"KingBusca - Encontre Produtos, Serviços ou Aluguel"];
@@ -25,6 +26,8 @@ class index  extends page {
 				break;
 			};
 		}
+		*/
+		$this->loadview('templates.bolaofrontcreated.model');
 	}
 }
 ?>

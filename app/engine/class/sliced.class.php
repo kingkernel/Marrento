@@ -1,10 +1,13 @@
 <?php
-/*
-Data de Criação: 05/08/2019
-Autor: Daniel J. Santos
-Data de Modificação: 19/08/2019
-*/
-class sliced
+/**
+ * Data de Criação: 05/08/2019
+ * Autor: Daniel J. Santos
+ * Data de Modificação: 26/03/2021
+ * 
+ * 
+ **/
+
+ class sliced
 {
 
 	public function __construct()
@@ -75,6 +78,11 @@ class sliced
 					}
 			}
 			preg_match_all('/@field\{\{(\w{2,30})\}\}/', $first, $z);
+			if(strpos($template1,'@include')){
+				preg_match_all('/@include\(\"(.*)\"\)/', $first, $include);
+				$includefile = file_get_contents(str_replace(".", "/", PATHVIEW.$include[1][0]).".section.html");
+				$first = str_replace($include[0][0], $includefile, $first);
+			}
 		return fastload($first);
 	}
 }

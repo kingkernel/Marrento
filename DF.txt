@@ -1,0 +1,1 @@
+insert into cidades (sigla, cidade) values ("DF", "Brasília");

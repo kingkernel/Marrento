@@ -1,1 +1,37 @@
-[]
+[
+    {
+        "name": "kingkernel/suits",
+        "version": "dev-main",
+        "version_normalized": "dev-main",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kingkernel/Suits.git",
+            "reference": "541dccb2d37ab7fd5fe1091b78267e48a1b51aa7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kingkernel/Suits/zipball/541dccb2d37ab7fd5fe1091b78267e48a1b51aa7",
+            "reference": "541dccb2d37ab7fd5fe1091b78267e48a1b51aa7",
+            "shasum": ""
+        },
+        "time": "2021-03-27T12:29:04+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "suits\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Daniels Hogans",
+                "email": "daniel.santos.ap@gmail.com"
+            }
+        ],
+        "description": "template engine for PHP by Kingkernel. - Daniels Hogans"
+    }
+]

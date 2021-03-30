@@ -10,7 +10,14 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "autoload": {
+        "psr-4": {
+             "Kingkernel\\": "app/engine/class/native",
+         },
+      },
+    "require": {
+        "kingkernel/suits": "main-dev"
+    },
     "repositories": [
     {
        "type": "vcs",

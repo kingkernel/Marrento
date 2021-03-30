@@ -14,7 +14,7 @@ css= offlines
 
 [banco_de_dados]
 driver=mysql
-banco=kingbusca
+banco=bolaoregional
 usuario=root
 senha=
 host=localhost
