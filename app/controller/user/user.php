@@ -40,10 +40,9 @@ class user extends page
         .$_POST["user-estado"].'", "'
         .$_POST["user-cidade"].'", "'
         .$hash.'")';
-        if (queryDb($sql)){
+        if (!queryDb($sql)){
             $info = retornaqueryinfo($sql);
-            echo $info[2];
-            $this->loadview('templates.bolaofrontcreated.createfinish');
+            $this->loadview('templates.bolaofrontcreated.error');
         } else {
             $mail = new sendhtmlmail();
             $mail->subject = "Bolão Regional - cadastro de membro ";
@@ -90,7 +89,19 @@ class user extends page
     public function activated()
     {
         $hash = explode("/", $_GET["url"]);
-        $hash[2];
+        $sql = 'call existe("'.$hash[2].'")';
+        //$sql = 'call activeUser("'.$hash[2].'")';
+        $query = queryDb($sql);
+        $dados = $query->fetch(PDO::FETCH_ASSOC);
+        if ($dados["existe"]==1)
+        {
+            $info = 'select email from participantes where passwordkey="'.$hash[2].'"';
+            $query = queryDb($info);
+            $dados = $query->fetch(PDO::FETCH_ASSOC);
+            print_r($dados);
+        } else {
+            echo "fora da base";
+        };
     }
 }
 ?>

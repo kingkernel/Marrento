@@ -53,7 +53,7 @@
 				//conteudo do estensor na variavel
 				$extender = file_get_contents(PATHVIEW . $file .".page.html");
 				//padroes a serem pesquisados
-				$patterns = ['/@field\{\{(\w{2,30})\}\}/', '/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/'];
+				$patterns = ['/@field\{\{(\w{2,30})\}\}/', '/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/', '/@include\(\"(.*)\"\)/'];
 				//guardar o conteudo do herdeiro
 				$herdeiro = preg_replace($patterns, "", $template1);
 				//varrer o extender atrás de outras seções
@@ -124,7 +124,7 @@
 				//conteudo do estensor na variavel
 				$extender = file_get_contents(PATHVIEW . $file .".page.html");
 				//padroes a serem pesquisados
-				$patterns = ['/@field\{\{(\w{2,30})\}\}/', '/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/'];
+				$patterns = ['/@field\{\{(\w{2,30})\}\}/', '/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/', '/@include\(\"(.*)\"\)/'];
 				//guardar o conteudo do herdeiro
 				$herdeiro = preg_replace($patterns, "", $template1);
 				//varrer o extender atrás de outras seções
