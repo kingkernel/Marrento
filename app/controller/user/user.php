@@ -118,6 +118,7 @@ class user extends page
             };
         };
         print_r($_POST);
+        //Array ( [hash] => @field{{hashuser}} [user-email] => 222222222222 [user-passkey] => 123456 [confirm-passkey] => 123456 )
     }
 }
 ?>
