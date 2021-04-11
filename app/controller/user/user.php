@@ -91,17 +91,33 @@ class user extends page
         $hash = explode("/", $_GET["url"]);
         $sql = 'call existe("'.$hash[2].'")';
         //$sql = 'call activeUser("'.$hash[2].'")';
-        $query = queryDb($sql);
-        $dados = $query->fetch(PDO::FETCH_ASSOC);
-        if ($dados["existe"]==1)
+        $query = queryDb($sql)->fetch(PDO::FETCH_ASSOC);
+        if ($query["existe"]==1)
         {
             $info = 'select email from participantes where passwordkey="'.$hash[2].'"';
-            $query = queryDb($info);
-            $dados = $query->fetch(PDO::FETCH_ASSOC);
-            print_r($dados);
+            $query = queryDb($info)->fetch(PDO::FETCH_ASSOC);
+            $fields = [
+                "email" => $query["email"],
+                "hash"=> $hash[2]
+                ];
+            $this->loadview('templates.bolaofrontcreated.activeuppasskey', $fields);
         } else {
             echo "fora da base";
         };
+    }
+    public function efettiveactive()
+    {
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+            echo "metódo de requisição não pemitido";
+            exit;
+        };
+        foreach($_POST as $key=>$value)
+        {
+            if(is_null($value)){
+                echo 'a variavel '.$key . "está vazia";
+            };
+        };
+        print_r($_POST);
     }
 }
 ?>
