@@ -17,10 +17,11 @@ class user extends page
         $tpl_values = ["estados"=>$estados];
         $this->loadview('templates.bolaofrontcreated.usercadastro', $tpl_values);
     }
-    public function post()
+    public function postCrt()
     {
         if($_SERVER["REQUEST_METHOD"] == "GET"){
             echo "metódo de requisição não pemitido";
+            exit;
         };
         foreach($_POST as $key=>$value)
         {
@@ -29,29 +30,67 @@ class user extends page
             };
         };
         $hash = base64_encode(implode("-", $_POST));
-
+        $nasc = in_data($_POST["user-nasc"]);
         $sql = 'call addParticipantes("'
         .$_POST["user-nome"].'", "'
         .$_POST["user-cpf"].'", "'
+        .$nasc.'", "'
         .$_POST["user-email"].'", "'
         .$_POST["user-pix"].'", "'
         .$_POST["user-estado"].'", "'
         .$_POST["user-cidade"].'", "'
         .$hash.'")';
+        if (queryDb($sql)){
+            $info = retornaqueryinfo($sql);
+            echo $info[2];
+            $this->loadview('templates.bolaofrontcreated.createfinish');
+        } else {
+            $mail = new sendhtmlmail();
+            $mail->subject = "Bolão Regional - cadastro de membro ";
+            $mail->to = $_POST["user-email"];
+            $content = new htmlwrapper;
+            $fields = [
+                "link"=> "http://".$_SERVER["HTTP_HOST"]."/user/activated/".$hash
+            ];
+            $mail->message = $content->loadtemplate("bolaofrontcreated/mailsigup.page.html", $fields);
+            $mail->send();
+            $this->loadview('templates.bolaofrontcreated.createfinish');
+            //echo "sucesso";
+        };
+
+        /*
+        $pathcommand = explode("/", $_GET["url"]);
+        if($pathcommand[2]=="sigup")
+        {
+            //queryDb($sql); 
+        } else {
+            echo  "faill";
+        };
+        
+        try {
+            queryDb($sql);
+        } catch (Exception $e) {
+            echo "faill";
+        };
+        */
+        
         //prepara e-mail de ativação
-        $mail = new sendhtmlmail();
-        $mail->subject = "Bolão Regional - cadastro de membro ";
-        $mail->to = $_POST["user-email"];
-        $mailcontent = new htmlwrapper;
-        $mensagem = "usercadastroform.section.html";
-        $mailcontent->loadtemplate($mensagem);
+
+        //$mailcontent = new htmlwrapper;
+        //$mensagem = "bolaofrontcreated/usercadastro.page.html";
+        //$mailcontent->loadtemplate($mensagem);
         //$mail->sender = "daniel.santos@kingkernel.com.br";
         //$mensagem = "app/view/templates/mailtemplates/signupstart.page.html";
         //$link = ["linkstart" => "http://".$_SERVER['SERVER_NAME']."/signup/active/". $stamp.":".$mailaddress];
         //$mail->loadtemplate($mensagem, $link);
         //$mail->send();
-        echo $sql;
-        $this->loadview('templates.bolaofrontcreated.mails.mailsigup');
+        //echo $sql;
+       // $this->loadview('templates.bolaofrontcreated.mails.mailsigup');
+    }
+    public function activated()
+    {
+        $hash = explode("/", $_GET["url"]);
+        $hash[2];
     }
 }
 ?>

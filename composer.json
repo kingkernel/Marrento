@@ -12,7 +12,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-             "Kingkernel\\": "app/engine/class/native",
+             "Kingkernel\\": "app/engine/class/native/",
          },
       },
     "require": {

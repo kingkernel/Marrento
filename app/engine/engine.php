@@ -210,7 +210,7 @@ function fastquery_messages_($sql, $mensagem1, $mensagem2){
         return $mensagem2;
     };
 };
-function retornaqueryinfo_($dados){
+function retornaqueryinfo($dados){
 /**
     Nome:           retornaqueryinfo
     Função:         executa uma inserção no banco de dados
@@ -303,6 +303,17 @@ class submit_{
 }
 function dateBrIn($pegaadata){
             $tratando = explode("/", $pegaadata); // pega a data e divide em array 
+            //print_r($tratando);       // para debugar
+            //echo "<br/>";             // para debugar
+            $revertido = array_reverse($tratando); // inverte a posição do array
+            //print_r($revertido);      // para debugar
+            //echo "<br/>";             // para debugar
+            $pronto = implode("-", $revertido); // junta o array separando com "-" em uma única string
+            //echo $pronto . "<br/>";   // para debugar
+            return $pronto;
+        };
+function in_data($pegaadata){
+            $tratando = explode("-", $pegaadata); // pega a data e divide em array 
             //print_r($tratando);       // para debugar
             //echo "<br/>";             // para debugar
             $revertido = array_reverse($tratando); // inverte a posição do array

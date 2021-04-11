@@ -16,7 +16,7 @@ class ajax
         {
             $cidades .= '<option values="'.$dados["id"].'">'.$dados["cidade"]."</option>";
         }
-        print_r($cidades);
+        echo $cidades;
     }
 }
 ?>

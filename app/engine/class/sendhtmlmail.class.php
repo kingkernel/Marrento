@@ -41,7 +41,7 @@
 			$this->header = $header;
 			if(mail($this->to, $this->subject, $this->message, $this->header))
 			{
-				echo 'ok';
+				//echo 'ok';
 			}
 			else
 			{

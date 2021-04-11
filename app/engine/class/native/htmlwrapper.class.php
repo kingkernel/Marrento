@@ -6,15 +6,19 @@ class htmlwrapper
     {
 
     }
-    public function loadtemplate($template)
+    public function loadtemplate($template, $fields = [])
     {
         if (is_string($template)){
-            echo "foi passado uma string";
+            $tpl = new sliced;
+            $content = $tpl->getTemplate($template);
+            foreach ($fields as $key => $value) {
+                $content = str_replace('@field{{'.$key.'}}', $value, $content);
+            };
+            return fastload($content);
         };
         if (is_array($template)){
-            echo "foi passado um array";
+            $file =  "foi passado um array";
         };
-        $file = file_get_contents(PATHVIEW."templates/".$template);
         return $file;
     }
 }
