@@ -98,7 +98,7 @@ class user extends page
             $query = queryDb($info)->fetch(PDO::FETCH_ASSOC);
             $fields = [
                 "email" => $query["email"],
-                "hash"=> $hash[2]
+                "hashuser"=> $hash[2]
                 ];
             $this->loadview('templates.bolaofrontcreated.activeuppasskey', $fields);
         } else {
