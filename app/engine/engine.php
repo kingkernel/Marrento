@@ -346,4 +346,12 @@ function percentual($parcial, $total){
             }
             return $result;
         };
+
+function passkeyHash($password, $salt)
+    {
+        $start = base64_encode($password);
+        $middle = sha1(md5($password).$salt.md5(sha1($password.$salt)));
+        $end = base64_encode($middle);
+        return $end;
+    }
 ?>

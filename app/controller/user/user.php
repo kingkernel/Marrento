@@ -54,37 +54,7 @@ class user extends page
             $mail->message = $content->loadtemplate("bolaofrontcreated/mailsigup.page.html", $fields);
             $mail->send();
             $this->loadview('templates.bolaofrontcreated.createfinish');
-            //echo "sucesso";
         };
-
-        /*
-        $pathcommand = explode("/", $_GET["url"]);
-        if($pathcommand[2]=="sigup")
-        {
-            //queryDb($sql); 
-        } else {
-            echo  "faill";
-        };
-        
-        try {
-            queryDb($sql);
-        } catch (Exception $e) {
-            echo "faill";
-        };
-        */
-        
-        //prepara e-mail de ativação
-
-        //$mailcontent = new htmlwrapper;
-        //$mensagem = "bolaofrontcreated/usercadastro.page.html";
-        //$mailcontent->loadtemplate($mensagem);
-        //$mail->sender = "daniel.santos@kingkernel.com.br";
-        //$mensagem = "app/view/templates/mailtemplates/signupstart.page.html";
-        //$link = ["linkstart" => "http://".$_SERVER['SERVER_NAME']."/signup/active/". $stamp.":".$mailaddress];
-        //$mail->loadtemplate($mensagem, $link);
-        //$mail->send();
-        //echo $sql;
-       // $this->loadview('templates.bolaofrontcreated.mails.mailsigup');
     }
     public function activated()
     {
@@ -111,14 +81,10 @@ class user extends page
             echo "metódo de requisição não pemitido";
             exit;
         };
-        foreach($_POST as $key=>$value)
-        {
-            if(is_null($value)){
-                echo 'a variavel '.$key . "está vazia";
-            };
-        };
-        print_r($_POST);
-        //Array ( [hash] => @field{{hashuser}} [user-email] => 222222222222 [user-passkey] => 123456 [confirm-passkey] => 123456 )
+        $sql = 'call upPasskey("'.$_POST["user-email"].'", "'.passkeyHash($_POST["user-passkey"], $_POST["user-email"]).'")'; 
+        queryDb($sql);
+            $this->loadview("templates.bolaofrontcreated.signupfinish");            
+        
     }
 }
 ?>

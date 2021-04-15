@@ -80,7 +80,7 @@
 			preg_match_all('/@field\{\{(\w{2,30})\}\}/', $first, $z);
 			if(strpos($template1,'@include')){
 				preg_match_all('/@include\(\"(.*)\"\)/', $first, $include);
-				$includefile = file_get_contents(str_replace(".", "/", PATHVIEW.$include[1][0]).".section.html");
+				$includefile = file_get_contents(PATHVIEW . str_replace(".", "/", $include[1][0]).".section.html");
 				$first = str_replace($include[0][0], $includefile, $first);
 			}
 		return fastload($first);
