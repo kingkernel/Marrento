@@ -21,7 +21,7 @@ function urlcss($url){
     Última alteração: 21/03/2019
 ###################################################################################################
     */
-    if (!isset($url["urldigitada"])){$url["urldigitada"] = "";};$espacos = explode("/", $url["urldigitada"]);$total = count($espacos);$barras="";$x=2;while ($x <= $total){$barras .= "../";$x++;};return $barras;
+    if (!isset($url["url"])){$url["url"] = "";};$espacos = explode("/", $url["url"]);$total = count($espacos);$barras="";$x=2;while ($x <= $total){$barras .= "../";$x++;};return $barras;
 };
 
 function queryDb($dados){

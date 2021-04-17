@@ -5,6 +5,12 @@ class index  extends page {
 	}
 	public function index()
 	{
+		if (!isset($_SESSION["logged"]))
+		{
+			$this->loadview('templates.bolaofrontcreated.model');
+		} else {
+			$this->loadview('templates.bolaofrontcreated.logontopmenu');
+		}
 		/*
 		$path = "/app/view/templates/startbootstrapadmin/";	
 		$fields = ["pathtemplate" => $path,
@@ -27,7 +33,7 @@ class index  extends page {
 			};
 		}
 		*/
-		$this->loadview('templates.bolaofrontcreated.model');
+		
 	}
 }
 ?>

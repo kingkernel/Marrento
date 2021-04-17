@@ -14,12 +14,11 @@ abstract class lego
 	public function __construct()
 	{
 
-	}
-	
+	}	
 	public function shred($template, $fields = [])
 	{
 		$subst = str_replace(".", "/", $template);
-		$patterns = ['/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/'];
+		$patterns = ['/@section\(\"(.*)\"\)/', '/@extends\(\"(.*)\"\)/', '/@include\(\"(.*)\"\)/'];
 		if(file_exists(PATHVIEW . $subst .".section.html"))
 			{
 				$template1 = (file_get_contents(PATHVIEW . $subst .".section.html"));

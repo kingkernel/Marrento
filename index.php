@@ -71,7 +71,7 @@ if (in_array($parametros[0], $buscapath) == true){
 		if(isset($parametros[1]) != false) {
 			$page = new $parametros[0]();
 			// caso alguém digite a barra vazia sem parametros.
-			if ($parametros[1] == ""){
+			if ($parametros[1] == "" || !isset($parametros[1])){
 				// atribuimos index que é o padrão
 				$parametros[1] = "index";
 				};			

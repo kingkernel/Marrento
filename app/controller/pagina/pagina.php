@@ -9,4 +9,8 @@ class pagina extends page
     {
         $this->loadview('templates.bolaofrontcreated.comofunciona');
     }
+    public function coins()
+    {
+        $this->loadview('templates.bolaofrontcreated.credit');
+    }
 }

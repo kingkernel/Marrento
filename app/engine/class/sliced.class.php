@@ -133,6 +133,11 @@
 				$first = str_replace('@section("'.$template.'")', $herdeiro, $extender);
 				//procura se há mais sections a levantar
 				preg_match_all('/@section\(\"(.*)\"\)/', $first, $x);
+				if(strpos($template1,'@include')){
+					preg_match_all('/@include\(\"(.*)\"\)/', $first, $include);
+					$includefile = file_get_contents(str_replace(".", "/", PATHVIEW.$include[1][0]).".section.html");
+					$first = str_replace($include[0][0], $includefile, $first);
+				}
 				//pega o conteudo dos matchs encontrados
 				$matchscontent = [];
 				foreach ($x[1] as $key => $value) 

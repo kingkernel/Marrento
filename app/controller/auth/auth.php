@@ -1,5 +1,5 @@
 <?php
-class auth
+class auth extends page
 {
 
     public function __construct()
@@ -15,9 +15,15 @@ class auth
         $query = queryDb($sql)->fetch(PDO::FETCH_ASSOC);
         if($query["existe"]==1)
         {
-            echo "pode entrar";
+            $_SESSION["logged"] = true;
+            header("Location: / ");
         } else {
             echo "ninguém no banco de dados";
         }
+    }
+    public function logoff()
+    {
+        unset($_SESSION["logged"]);
+        header("Location: /");
     }
 }
