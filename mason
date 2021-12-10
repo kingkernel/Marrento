@@ -1,0 +1,53 @@
+<?php
+/**
+###################################################################################################
+	ARQUIVO: mason
+  	ferramenta CLI do Marrento
+  	Criador: Daniels Hogans
+  	e-mail: daniel.santos.ap@gmail.com
+ 	Criação: 28/10/2020
+ 	Últimas alterações: 28/10/2020
+###################################################################################################
+**/
+$app = include(__DIR__ . "/app/config/configapp.php");
+if (isset($argv[1]) ? $argv[1] :$argv[1] = "");
+switch($argv[1])
+	{
+		case 'version':
+			echo "  Marrento now is ". $app["version"];
+		break;
+		case 'help':
+echo 'Mason é a ferramenta de linha de comando do Marrento. Esta versão 
+é "'.$app["version"].'". Desenvolvido por Daniels Hogans. Os comandos 
+iniciais são:
+    version : Mostra a versão da engine do Marrento.
+    generatehash: Gera o hash_system para sua instalação.
+    route :	criar rotas para a aplicação.';
+		break;
+		case 'generatehash':
+			echo "gerando chave de instalação:\n";
+			$time = time();
+			$data = date("Y-m-d");
+			$algol = $data.$time.$app["secret_key"];
+			echo md5(base64_encode(hash("sha3-512", $algol)))."\ncopie e substitua o valor na variavel 'hash_system' no arquivo configapp.php.";
+		break;
+		case "route":
+			$pathtoroute = "app/controller/";
+			$route = $argv[2];
+			if (isset($argv[2]) ? $argv[2] : $argv[2]="digite uma rota\n");
+			if(!file_exists($pathtoroute.$route))
+				{
+					mkdir($pathtoroute.$route, 664, true);
+					$conteudo = "<?php\n    class $route extends page\n    {\n        public function index()\n        {\n           echo 'rota $route criada!';\n        }\n    }\n?>";
+					$arquivo = fopen($pathtoroute.$route."/$route.php", 'w');
+					fwrite($arquivo, $conteudo);
+					fclose($arquivo);
+				} else {
+					echo "A rota já foi criada!";
+				};
+		break;
+		default:
+			echo "ferramenta de linha de comando. Digite 'mason help' para a lista de comandos";
+		break;
+	};
+?>

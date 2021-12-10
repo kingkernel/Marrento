@@ -1,0 +1,8 @@
+# Arquivo: .htaccess
+# Data: 05/03/2021
+RewriteEngine on
+RewriteRule . boot.php [L]
+Options -Indexes
+<FilesMatch "\.(htm|html|css|js|php)$">
+	AddDefaultCharset UTF-8
+</FilesMatch>

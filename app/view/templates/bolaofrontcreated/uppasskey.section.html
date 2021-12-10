@@ -1,0 +1,51 @@
+<div class="container-fluid" style="margin-top: 25px;">
+    <div class="card">
+        <div class="card-header">
+          Ativação e cadastro de senha de acesso
+        </div>
+        <form action="/user/efettiveactive/" id="passkeyform"  method="POST">
+          <div class="card-body">
+            <h5 class="card-title">Email : </h5>
+            <input type="hidden" name="hash" value="@field{{hashuser}}">
+            <input type="email" class="form-control" id="user-email" name="user-email"  maxlength="150" value="@field{{email}}" readonly>
+            <h5 class="card-title">Password:</h5>
+            <input type="password" class="form-control" id="user-passkey" name="user-passkey" placeholder="Escolha uma senha" maxlength="150" required>
+            <h5 class="card-title">Confirme Password:</h5>
+            <input type="password" class="form-control" id="confirm-passkey" name="confirm-passkey" placeholder="confirme" maxlength="150" required>
+          <div class="card-body">
+            <input type="submit" value="Criar senha " class="btn btn-primary" id="go">
+          </div>
+        </form>
+      </div>  
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function (){
+    $("#go").click(function (){
+        var key1 = $("#user-passkey").val();
+        var key2 = $("#confirm-passkey").val();
+        if(key1==""){
+            alert("O campo password precisa de algum valor");
+            return false;
+        };
+        if(key2==""){
+            alert("O campo de confirmação precisa de algum valor");
+            return false;
+        };
+        if(key1.length < 6){
+            alert("O campo password precisa de 6 digitos!");
+            return false;
+        };
+        if(key2==""){
+            alert("O campo de confirmação precisa de algum valor");
+            return false;
+        };
+        if(key1!=key2)
+        {
+            alert("A senha e a confirmação precisam ser iguais!");
+            return false;
+        };
+            $("#passkeyform").submit(); 
+    });
+});
+</script>

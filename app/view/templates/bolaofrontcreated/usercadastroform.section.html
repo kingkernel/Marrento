@@ -1,0 +1,54 @@
+<div class="container-fluid" style="margin-top: 25px;">
+    <div class="card">
+        <div class="card-header">
+          Cadastro de Membro da comunidade - <a href="#">Leia os termos da Comunidade</a>
+        </div>
+        <form action="/user/postCrt/" method="POST">
+          <div class="card-body">
+            <h5 class="card-title">Nome:</h5>
+            <input type="text" class="form-control" name="user-nome" placeholder="Seu nome completo" maxlength="150" required>
+            <h5 class="card-title">CPF:</h5>
+            <input type="text" class="form-control" id="user-cpf" name="user-cpf" placeholder="Seu CPF" maxlength="150" required>
+            <h5 class="card-title">Nascimento:</h5>
+            <input type="text" class="form-control" id="user-nasc" name="user-nasc" placeholder="Seu Nascimento dia - mês - ano" maxlength="150" required>
+            <h5 class="card-title">E-mail:</h5>
+            <input type="email" class="form-control" name="user-email" placeholder="Seu e-mail para as notificações" maxlength="150" required>
+            <h5 class="card-title">PIX:</h5>
+            <input type="text" class="form-control" name="user-pix" placeholder="Seu Pix para recebimento" maxlength="150" required>
+            <h5 class="card-title">Estado:</h5>
+            <select class="form-select" id="user-estado" name="user-estado" required>
+              @field{{estados}}
+            </select>
+            <h5 class="card-title">Cidade:</h5>
+            <select class="form-select" id="user-cidade" name="user-cidade" required>
+            </select>          
+          </div>
+          <div class="card-body">
+            <input type="submit" value="Ingressar no Clube " class="btn btn-primary">
+          </div>
+        </form>
+      </div>  
+</div>
+<div id="fill"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<!-- 
+<script src="public/js/run_prettify.js"></script>
+<script src="public/js/bootstrap-datepicker.min.js"></script>
+<script src="public/js/bootstrap-datepicker.pt-BR.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha512-GDey37RZAxFkpFeJorEUwNoIbkTwsyC736KNSYucu1WJWFK9qTdzYub8ATxktr6Dwke7nbFaioypzbDOQykoRg==" crossorigin="anonymous"></script>
+-->
+<script type="text/javascript">
+$(document).ready(function (){
+  $("#user-cpf").mask('000.000.000-00', {reverse: true});
+  $('#user-nasc').mask("99-99-9999");
+  $("#user-estado").change(function (){
+    let estado = $("#user-estado").val();
+    $("#user-cidade").load('http://'+document.location.hostname+'/ajax/cidades/'+ estado,
+      function (data){
+        $("#user-cidade").html(data);
+      })
+  })
+});
+</script>

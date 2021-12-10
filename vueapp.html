@@ -1,0 +1,27 @@
+<div id="app">
+	<app-nav></app-nav>
+	<app-view>
+		<app-sidebar></app-sidebar>
+		<app-content>
+			<ul>
+				<li v-for="product in products">
+					{{product.id}}
+				</li>
+			</ul>
+			<hello></hello>
+		</app-content>
+	</app-view>
+</div>
+<script src="/public/js/vue.min.js"></script>
+<script type>
+	var demo = new Vue({
+		el: "#app",
+		data: {
+			products:
+			[
+					fetch("http://127.0.0.2/api/")
+					.then(response => {response})
+			]
+		}
+	})
+</script>

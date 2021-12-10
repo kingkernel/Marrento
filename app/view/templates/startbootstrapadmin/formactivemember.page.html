@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>KingBusca - Confirmação de Cadastro </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/bootstrap-datetimepicker-standalone.css" rel="stylesheet">
+    <style type="text/css">
+        .nav>li>a:focus, .nav>li>a:hover{background: transparent!important;}
+.design-process-section .text-align-center {
+    line-height: 25px;
+    margin-bottom: 12px;
+}
+.design-process-content {
+    border: 1px solid #e9e9e9;
+    position: relative;
+    padding: 16px 34% 30px 30px;
+}
+.design-process-content img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    max-height: 100%;
+}
+.design-process-content h3 {
+    margin-bottom: 16px;
+}
+.design-process-content p {
+    line-height: 26px;
+    margin-bottom: 12px;
+}
+.process-model {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    max-width: 600px;
+    margin: 20px auto 26px;
+    border: none;
+    z-index: 0;
+}
+.process-model li::after {
+    background: #e5e5e5 none repeat scroll 0 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 4px;
+    margin: 0 auto;
+    position: absolute;
+    right: -30px;
+    top: 33px;
+    width: 85%;
+    z-index: -1;
+}
+.process-model li.visited::after {
+    background: #007b5e;
+}
+.process-model li:last-child::after {
+    width: 0;
+}
+.process-model li {
+    display: inline-block;
+    width: 18%;
+    text-align: center;
+    float: none;
+}
+.nav-tabs.process-model > li.active > a, .nav-tabs.process-model > li.active > a:hover, .nav-tabs.process-model > li.active > a:focus, .process-model li a:hover, .process-model li a:focus {
+    border: none;
+    background: transparent;
+
+}
+.process-model li a {
+    padding: 0;
+    border: none;
+    /* color: #606060;*/
+    color:#007b5e;
+}
+.process-model li.active,
+.process-model li.visited {
+    color: #007b5e;
+}
+.process-model li.active a,
+.process-model li.active a:hover,
+.process-model li.active a:focus,
+.process-model li.visited a,
+.process-model li.visited a:hover,
+.process-model li.visited a:focus {
+    color: #007b5e;
+}
+.process-model li.active p,
+.process-model li.visited p {
+    font-weight: 600;
+    color: #007b5e;
+}
+.process-model li i {
+    display: block;
+    height: 68px;
+    width: 68px;
+    text-align: center;
+    margin: 0 auto;
+    background: #f5f6f7;
+    border: 2px solid #e5e5e5;
+    line-height: 65px;
+    font-size: 30px;
+    border-radius: 50%;
+}
+.process-model li.active i, .process-model li.visited i  {
+    background: #fff;
+    border-color: #007b5e;
+}
+.process-model li p {
+    font-size: 14px;
+    margin-top: 11px;
+}
+.process-model.contact-us-tab li.visited a, .process-model.contact-us-tab li.visited p {
+    color: #606060!important;
+    font-weight: normal
+}
+.process-model.contact-us-tab li::after  {
+    display: none; 
+}
+.process-model.contact-us-tab li.visited i {
+    border-color: #e5e5e5; 
+}
+
+
+
+@media screen and (max-width: 560px) {
+  .more-icon-preocess.process-model li span {
+        font-size: 23px;
+        height: 50px;
+        line-height: 46px;
+        width: 50px;
+    }
+    .more-icon-preocess.process-model li::after {
+        top: 24px;
+    }
+}
+@media screen and (max-width: 380px) { 
+    .process-model.more-icon-preocess li {
+        width: 16%;
+    }
+    .more-icon-preocess.process-model li span {
+        font-size: 16px;
+        height: 35px;
+        line-height: 32px;
+        width: 35px;
+    }
+    .more-icon-preocess.process-model li p {
+        font-size: 8px;
+    }
+    .more-icon-preocess.process-model li::after {
+        top: 18px;
+    }
+    .process-model.more-icon-preocess {
+        text-align: center;
+    }
+}
+.stilo{
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #007b5e;
+    border-radius: 10px;
+}
+.bg-stilo{
+    background-color: #007b5e;
+}
+.btn-stile {
+    color: #fff;
+    background-color: #007b5e;
+    border-color: #007b5e;
+}
+select.form-controlfree:not([size]):not([multiple]) {
+display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<div class="container">
+	<div class="row">
+		      <div class="col-xs-12"> 
+        <!-- design process steps--> 
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs process-model more-icon-preocess text-" role="tablist">
+          <li role="presentation" class="active"><a href="#you" aria-controls="discover" role="tab" data-toggle="tab"><i class="fa fa-user" aria-hidden="true"></i>
+            <p>Você</p>
+            </a></li>
+          <li role="presentation"><a href="#where" aria-controls="where" role="tab" data-toggle="tab"><i class="fa fa-map-marker" aria-hidden="true"></i>
+            <p>Onde?</p>
+            </a></li>
+          <li role="presentation"><a href="#optimization" aria-controls="optimization" role="tab" data-toggle="tab"><i class="fa fa-bullhorn" aria-hidden="true"></i>
+            <p>Como?</p>
+            </a></li>
+          <li role="presentation"><a href="#content" aria-controls="content" role="tab" data-toggle="tab"><i class="fa fa-lock" aria-hidden="true"></i>
+            <p>Finalizando</p>
+            </a></li>
+
+        </ul>
+
+
+        <form action="/signup/finish/" method="POST" id="finish" onSubmit="return false;">
+            <input type="hidden" value="@field{{idmember}}" name="idmember">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="you">
+            <div class="design-process-content">
+                <h3 class="semi-bold">Gostariamos de conhecê-lo.</h3>
+                <div class="form-group row">
+                    <label for="membro" class="col-4 col-form-label">Primeiro nome <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="membro" name="membro" placeholder="Seu primeiro nome" class="form-control here" required="required" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="sobrenome" class="col-4 col-form-label">Sobrenome <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="sobrenome" name="sobrenome" placeholder="sobre nome" class="form-control here" required="required" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="nascimento" class="col-4 col-form-label">Nascimento <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="nasc" name="nascimento" placeholder="Data de nascimento" class="form-control input-group date" required="required" type="text" data-provide="datepicker"  data-date-format="dd/mm/yyyy">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="genero" class="col-4 col-form-label">Genero <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <select id="genero" name="genero" class="form-controlfree" required="required">
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                        <option value="BS">Bisexual</option>
+                        <option value="MH">Masculino Homo</option>
+                        <option value="FH">Feminino Homo</option>
+                    </select>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="where">
+            <div class="design-process-content">
+              <h3 class="semi-bold">Localizar coisas perto de você</h3>
+
+                <div class="form-group row">
+                    <label for="cep" class="col-4 col-form-label">Cep <span class="text text-danger">*</span></label> 
+                    <div class="col-4">
+                    <input id="cep" name="cep" placeholder="CEP" class="form-control here" required="required" type="text">
+                    </div>
+                    <div class="col-4">
+                        <div id="btncep" class="btn btn-stile">Pesquisar</div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="estado" class="col-4 col-form-label">Estado <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="estado" name="estado" placeholder="Estado" class="form-control here" required="required" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="cidade" class="col-4 col-form-label">Cidade <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="cidade" name="cidade" placeholder="Cidade" class="form-control here" required="required" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="bairro" class="col-4 col-form-label">Bairro <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="bairro" name="bairro" placeholder="Bairro" class="form-control here" required="required" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="logradouro" class="col-4 col-form-label">Logradouro <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="logradouro" name="logradouro" placeholder="Logradouro / Rua" class="form-control here" required="required" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="numero" class="col-4 col-form-label">Numero <span class="text text-danger">*</span></label> 
+                    <div class="col-3">
+                        <input id="numero" name="numero" placeholder="Número" class="form-control here" required="required" type="text">
+                    </div>
+                    <div class="col-5">
+                        <input id="complemento" name="complemento" placeholder="Complemento" class="form-control here" type="text">
+                    </div>
+                </div>             
+
+              </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="optimization">
+            <div class="design-process-content">
+              <h3 class="semi-bold">Como</h3>
+
+
+                <div class="form-group row">
+                    <label for="fone" class="col-4 col-form-label"><span class="stilo bg-stilo"><span class="fa fa-phone fa-2x"></span></span> Fone <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="fone" name="fone" placeholder="telefone" class="form-control here" required="required" type="text">
+                    </div>
+                </div> 
+
+                <div class="form-group row">
+                    <label for="whatsapp" class="col-4 col-form-label"><span class="stilo bg-stilo"><span class="fa fa-whatsapp fa-2x"></span></span> Whatsapp </label> 
+                    <div class="col-8">
+                    <input id="whatsapp" name="whatsapp" placeholder="Username" class="form-control here" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="facebook" class="col-4 col-form-label"><span class="stilo bg-stilo"><span class="fa fa-facebook fa-2x"></span></span> Facebook </label> 
+                    <div class="col-8">
+                    <input id="facebook" name="facebook" placeholder="Username" class="form-control here" type="text">
+                    </div>
+                </div> 
+
+
+               </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="content">
+            <div class="design-process-content">
+              <h3 class="semi-bold">Content</h3>
+
+                <div class="form-group row">
+                    <label for="passkey" class="col-4 col-form-label">Senha <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="passkey" name="passkey" placeholder="escolha uma senha" class="form-control" required="required" type="password">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="repasskey" class="col-4 col-form-label">Repita <span class="text text-danger">*</span></label> 
+                    <div class="col-8">
+                    <input id="repasskey" name="repasskey" placeholder="repita a senha" class="form-control" required="required" type="password">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="username" class="col-4 col-form-label"></label> 
+                    <div class="col-8">
+                    <input type="submit" value="Finalizar" class="btn btn-stile" onClick=" valida();">
+                    </div>
+                </div>
+            
+              </div>
+          </div>
+
+    </form>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
+<div id="oculta"></div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script type="text/javascript" src="/public/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src='/public/js/bootstrap-datepicker.min.js'></script>
+<script type="text/javascript" src='/public/js/bootstrap-datepicker.pt-BR.min.js'></script>
+<script type="text/javascript">
+     $("#oculta").hide();
+    function getCep(cep){
+    if(cep.length < 8){
+        alert("Precisa de 8 digitos!");
+        $("#cep").focus();
+        return false;
+    } else {
+        var url = 'http://viacep.com.br/ws/'+ cep +'/json/';
+        $("#oculta").load(url, function(data)
+            {
+                var obj = jQuery.parseJSON(data);
+                $("#bairro").val(obj.bairro);
+                $("#logradouro").val(obj.logradouro);
+                $("#estado").val(obj.uf);
+                $("#complemento").val(obj.complemento);
+                $("#cidade").val(obj.localidade);
+            });
+        };
+}
+    function valida(){
+        if($("#membro").val()==""){alert("falta o Nome na Aba Você!"); return false;};
+        if($("#sobrenome").val()==""){alert("falta o Sobrenome na Aba Você!");return false;};
+        if($("#nasc").val()==""){alert("falta o Nascimento na Aba Você!");return false;};
+        if($("#cep").val()==""){alert("falta o CEP na Aba Onde!");return false;};
+        if($("#estado").val()==""){alert("falta o Estado na Aba Onde!");return false;};
+        if($("#cidade").val()==""){alert("falta A Cidade na Aba Onde!");return false;};
+        if($("#bairro").val()==""){alert("falta o Bairro na Aba Onde!");return false;};
+        if($("#logradouro").val()==""){alert("falta o Logradouro na Aba Onde!");return false;};
+        if($("#numero").val()==""){alert("falta o Número na Aba Onde!");return false;};
+        if($("#fone").val()==""){alert("falta um fone na Aba Como!");return false;};
+        if($("#passkey").val()==""){alert("Digite uma senha");return false;};
+        if($("#repasskey").val()==""){alert("Repita a senha");return false;};
+        if($("#passkey").val() !=$("#repasskey").val()){alert("As senhas não são iguais");return false;};
+
+        document.forms[0].submit();
+    };
+    $(document).ready(function(){
+        $("#cep").mask("00000-000");
+        $("#fone, #whatsapp").mask("(00) 00000-0000");
+        $("#btncep").click(function(){
+            var cep = $("#cep").val().replace("-", "");
+            getCep(cep);            
+        });
+    });
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+        var href = $(e.target).attr('href');
+        var $curr = $(".process-model  a[href='" + href + "']").parent();
+
+        $('.process-model li').removeClass();
+
+        $curr.addClass("active");
+        $curr.prevAll().addClass("visited");
+    });
+        $('#nasc').datepicker(
+            {format: "dd/mm/yyyy",
+            language: 'pt-BR'
+        });
+</script>
+</body>
+</html>
