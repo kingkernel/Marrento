@@ -15,9 +15,6 @@
              "Kingkernel\\": "app/engine/class/native/",
          },
       },
-    "require": {
-        "kingkernel/suits": "main-dev"
-    },
     "repositories": [
     {
        "type": "vcs",
