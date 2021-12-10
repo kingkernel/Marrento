@@ -9,7 +9,7 @@
          "email":"daniel.santos.ap@gmail.com"
       }
    ],
-   "minimum-stability":"totwo",
+   "minimum-stability":"master",
    "autoload":{
       "psr-4":{
          "Kingkernel\\":"app/engine/class/native/"
