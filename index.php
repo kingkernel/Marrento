@@ -6,7 +6,7 @@
   	Criador: Daniel José dos Santos
   	Email: daniel.santos.ap@gmail.com
  	Criação: 15/11/2017
- 	Últimas alterações: 28/10/2020
+ 	Últimas alterações: 02/05/2022
 ###################################################################################################
 **/
 /**
@@ -15,7 +15,7 @@ PREPARATIVOS PARA A VERSÃO 2.0
 // variavel app que futuramente conterá as informações gerais da aplicação
 $app = include("configapp.php");
 
-//	inicializa a sessão para todo o site
+//inicializa a sessão para todo o site
 session_start();
 $app = require("app/config/configapp.php");
 require('vendor/autoload.php');
@@ -43,7 +43,7 @@ spl_autoload_register(function ($class_name) {
 	if (file_exists(PATHENGINE . "class/" . $class_name . '.class.php')){
 		include PATHENGINE . "class/" . $class_name . '.class.php';
 	} elseif (file_exists(PATHENGINE . "class/native/front-end/" . $class_name . '.php')) {
-		include PATHMOTOR . "class/native/front-end/" . $class_name . '.php';
+		include PATHENGINE . "class/native/front-end/" . $class_name . '.php';
 	} elseif(file_exists(PATHENGINE . "class/native/back-end/" . $class_name . '.php')){
 		include PATHENGINE . "class/native/back-end/" . $class_name . '.php';
 	} else {
