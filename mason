@@ -1,4 +1,8 @@
 <?php
+if (php_sapi_name() !== 'cli') {
+    echo "Este script deve ser executado no terminal (CLI).\n";
+    exit(1);
+}
 /**
 ###################################################################################################
 	ARQUIVO: mason
